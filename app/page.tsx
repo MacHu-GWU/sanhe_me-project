@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Github, Linkedin, BookOpen, Menu, X, Calendar, MessageCircle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -154,8 +155,40 @@ export default function HomePage() {
           >
             {/* Profile Image */}
             <div className="mb-8">
-              <div className="w-30 h-30 mx-auto rounded-full border-2 border-primary bg-gradient-to-br from-primary/20 via-secondary/10 to-highlight/20 flex items-center justify-center shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300">
-                <span className="text-4xl font-bold text-primary drop-shadow-lg">SH</span>
+              {/* 
+                Container div that defines the actual rendered size:
+                - w-32 h-32 = 128px × 128px on mobile (Tailwind: 1 unit = 4px, so 32 × 4 = 128px)
+                - sm:w-40 sm:h-40 = 160px × 160px on desktop (40 × 4 = 160px) 
+                - mx-auto = margin-left: auto; margin-right: auto; (centers horizontally)
+                - rounded-full = border-radius: 50%; (makes it circular)
+                - border-2 = 2px solid border
+                - border-primary = uses CSS custom property --primary color
+                - shadow-lg = large drop shadow
+                - shadow-primary/30 = shadow color is primary at 30% opacity
+                - hover:shadow-primary/50 = on hover, shadow becomes 50% opacity
+                - transition-all duration-300 = smooth 300ms animation for all property changes
+                - overflow-hidden = clips content that exceeds the circular boundary
+              */}
+              <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full border-2 border-primary shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 overflow-hidden">
+                <Image
+                  src="/2025-07-30-Sanhe-Profile-Photo-1920x1920.webp"
+                  alt="Sanhe Hu Profile Photo"
+                  // Next.js Image optimization dimensions in PIXELS (not Tailwind units):
+                  // - width={160} = tells Next.js the intended display width is 160 pixels
+                  // - height={160} = tells Next.js the intended display height is 160 pixels
+                  // These values are used by Next.js for:
+                  // 1. Automatic image optimization and resizing
+                  // 2. Generating responsive srcSet for different screen densities
+                  // 3. Preventing Cumulative Layout Shift (CLS) by reserving space
+                  // 4. Should match the largest container size (desktop: 160px)
+                  width={160}
+                  height={160}
+                  // Tailwind classes for responsive behavior:
+                  // - w-full = width: 100%; (fills container width: 128px mobile, 160px desktop)
+                  // - h-full = height: 100%; (fills container height: 128px mobile, 160px desktop)  
+                  // - object-cover = object-fit: cover; (maintains aspect ratio, crops if needed)
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 

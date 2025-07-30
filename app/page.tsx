@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ExternalLink, BookOpen, Menu, X, Calendar, MessageCircle, Code2, Download, PenTool, GitCommit, Building2 } from "lucide-react"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { BookOpen, Menu, X, Calendar, MessageCircle, Download, PenTool, GitCommit, Building2 } from "lucide-react"
+import { FaGithub, FaLinkedin, FaPython } from "react-icons/fa"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -21,7 +21,7 @@ export default function HomePage() {
       color: "text-primary",
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
-      icon: Code2,
+      icon: FaPython,
       href: "https://pypi.org/user/machugwu/", // Replace with your GitHub profile
     },
     {
@@ -39,7 +39,7 @@ export default function HomePage() {
       color: "text-primary",
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
-      icon: ExternalLink,
+      icon: FaGithub,
       href: "https://github.com/MacHu-GWU?tab=repositories", // Replace with your repositories
     },
     {

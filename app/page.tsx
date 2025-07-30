@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Github, Linkedin, BookOpen, Menu, X, Calendar, MessageCircle } from "lucide-react"
+import { ExternalLink, BookOpen, Menu, X, Calendar, MessageCircle, Code2, Download, PenTool, GitCommit, Building2 } from "lucide-react"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -20,6 +21,8 @@ export default function HomePage() {
       color: "text-primary",
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
+      icon: Code2,
+      href: "https://pypi.org/user/machugwu/", // Replace with your GitHub profile
     },
     {
       number: "10M+",
@@ -27,6 +30,8 @@ export default function HomePage() {
       color: "text-primary",
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
+      icon: Download,
+      href: "https://github.com/MacHu-GWU", // Replace with your PyPI profile
     },
     {
       number: "600+",
@@ -34,6 +39,8 @@ export default function HomePage() {
       color: "text-primary",
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
+      icon: ExternalLink,
+      href: "https://github.com/MacHu-GWU?tab=repositories", // Replace with your repositories
     },
     {
       number: "2000+",
@@ -41,6 +48,8 @@ export default function HomePage() {
       color: "text-secondary",
       borderColor: "border-secondary",
       glowColor: "shadow-secondary/20",
+      icon: PenTool,
+      href: "https://blog.sanhe.me", // Replace with your blog URL
     },
     {
       number: "3000+",
@@ -48,6 +57,8 @@ export default function HomePage() {
       color: "text-secondary",
       borderColor: "border-secondary",
       glowColor: "shadow-secondary/20",
+      icon: GitCommit,
+      href: "https://github.com/sanhehu", // Replace with your GitHub profile
     },
     {
       number: "40+",
@@ -55,6 +66,8 @@ export default function HomePage() {
       color: "text-highlight",
       borderColor: "border-highlight",
       glowColor: "shadow-highlight/20",
+      icon: Building2,
+      href: "https://linkedin.com/in/sanhehu", // Replace with your LinkedIn
     },
   ]
 
@@ -208,14 +221,14 @@ export default function HomePage() {
                 className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
                 aria-label="GitHub"
               >
-                <Github size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
+                <FaGithub size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
               </a>
               <a
                 href="#"
                 className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
+                <FaLinkedin size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
               </a>
               <a
                 href="#"
@@ -233,21 +246,38 @@ export default function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {achievementStats.map((stat, index) => (
-              <div
-                key={index}
-                className={`bg-regular-button/80 backdrop-blur-sm ${stat.borderColor} border-2 rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 hover:shadow-lg ${stat.glowColor} hover:bg-regular-button/90 group`}
-              >
-                <div
-                  className={`text-3xl sm:text-4xl font-bold mb-2 ${stat.color} drop-shadow-lg group-hover:drop-shadow-xl transition-all duration-300`}
+            {achievementStats.map((stat, index) => {
+              const IconComponent = stat.icon
+              return (
+                <Link
+                  key={index}
+                  href={stat.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block bg-regular-button/80 backdrop-blur-sm ${stat.borderColor} border-2 rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 hover:shadow-lg ${stat.glowColor} hover:bg-regular-button/90 group cursor-pointer`}
                 >
-                  {stat.number}
-                </div>
-                <div className="text-text-secondary text-sm sm:text-base group-hover:text-text-primary transition-colors duration-300">
-                  {stat.description}
-                </div>
-              </div>
-            ))}
+                  {/* Icon */}
+                  <div className="flex justify-center mb-3">
+                    <IconComponent 
+                      size={24} 
+                      className={`${stat.color} group-hover:scale-110 transition-all duration-300`}
+                    />
+                  </div>
+                  
+                  {/* Number */}
+                  <div
+                    className={`text-3xl sm:text-4xl font-bold mb-2 ${stat.color} drop-shadow-lg group-hover:drop-shadow-xl transition-all duration-300`}
+                  >
+                    {stat.number}
+                  </div>
+                  
+                  {/* Description */}
+                  <div className="text-text-secondary text-sm sm:text-base group-hover:text-text-primary transition-colors duration-300">
+                    {stat.description}
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

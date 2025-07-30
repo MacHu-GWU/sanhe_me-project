@@ -22,7 +22,7 @@ export default function HomePage() {
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
       icon: FaPython,
-      href: "https://pypi.org/user/machugwu/", // Replace with your GitHub profile
+      href: "https://pypi.org/user/machugwu/",
     },
     {
       number: "10M+",
@@ -31,7 +31,7 @@ export default function HomePage() {
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
       icon: Download,
-      href: "https://github.com/MacHu-GWU", // Replace with your PyPI profile
+      href: "https://github.com/MacHu-GWU",
     },
     {
       number: "600+",
@@ -40,7 +40,7 @@ export default function HomePage() {
       borderColor: "border-primary",
       glowColor: "shadow-primary/20",
       icon: FaGithub,
-      href: "https://github.com/MacHu-GWU?tab=repositories", // Replace with your repositories
+      href: "https://github.com/MacHu-GWU?tab=repositories",
     },
     {
       number: "2000+",
@@ -49,7 +49,7 @@ export default function HomePage() {
       borderColor: "border-secondary",
       glowColor: "shadow-secondary/20",
       icon: PenTool,
-      href: "https://blog.sanhe.me", // Replace with your blog URL
+      href: "",
     },
     {
       number: "3000+",
@@ -58,7 +58,7 @@ export default function HomePage() {
       borderColor: "border-secondary",
       glowColor: "shadow-secondary/20",
       icon: GitCommit,
-      href: "https://github.com/sanhehu", // Replace with your GitHub profile
+      href: "https://github.com/MacHu-GWU",
     },
     {
       number: "40+",
@@ -67,7 +67,7 @@ export default function HomePage() {
       borderColor: "border-highlight",
       glowColor: "shadow-highlight/20",
       icon: Building2,
-      href: "https://linkedin.com/in/sanhehu", // Replace with your LinkedIn
+      href: "",
     },
   ]
 
@@ -248,14 +248,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {achievementStats.map((stat, index) => {
               const IconComponent = stat.icon
-              return (
-                <Link
-                  key={index}
-                  href={stat.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block bg-regular-button/80 backdrop-blur-sm ${stat.borderColor} border-2 rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 hover:shadow-lg ${stat.glowColor} hover:bg-regular-button/90 group cursor-pointer`}
-                >
+              const isClickable = stat.href && stat.href.trim() !== ""
+              
+              const cardContent = (
+                <>
                   {/* Icon */}
                   <div className="flex justify-center mb-3">
                     <IconComponent 
@@ -275,8 +271,31 @@ export default function HomePage() {
                   <div className="text-text-secondary text-sm sm:text-base group-hover:text-text-primary transition-colors duration-300">
                     {stat.description}
                   </div>
-                </Link>
+                </>
               )
+
+              if (isClickable) {
+                return (
+                  <Link
+                    key={index}
+                    href={stat.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block bg-regular-button/80 backdrop-blur-sm ${stat.borderColor} border-2 rounded-xl p-6 text-center hover:scale-105 transition-all duration-300 hover:shadow-lg ${stat.glowColor} hover:bg-regular-button/90 group cursor-pointer`}
+                  >
+                    {cardContent}
+                  </Link>
+                )
+              } else {
+                return (
+                  <div
+                    key={index}
+                    className={`bg-regular-button/80 backdrop-blur-sm ${stat.borderColor} border-2 rounded-xl p-6 text-center transition-all duration-300 ${stat.glowColor} group`}
+                  >
+                    {cardContent}
+                  </div>
+                )
+              }
             })}
           </div>
         </div>

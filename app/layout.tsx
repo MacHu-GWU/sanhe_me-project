@@ -12,7 +12,14 @@ export const metadata: Metadata = {
   keywords: ["Solution Architect", "Data Architect", "AI Architect", "Open Source", "Python", "Enterprise"],
   authors: [{ name: "Sanhe Hu" }],
   viewport: "width=device-width, initial-scale=1",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 }
 
 export default function RootLayout({

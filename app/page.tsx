@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { BookOpen, Menu, X, Calendar, MessageCircle, Download, PenTool, GitCommit, Building2 } from "lucide-react"
+import { BookOpen, Menu, X, Calendar, MessageCircle, Download, PenTool, GitCommit, Building2, Mail } from "lucide-react"
 import { FaGithub, FaLinkedin, FaPython } from "react-icons/fa"
 import Link from "next/link"
 import Image from "next/image"
@@ -217,21 +217,21 @@ export default function HomePage() {
             {/* Social Icons */}
             <div className="flex justify-center space-x-6">
               <a
-                href="#"
+                href="https://github.com/MacHu-GWU"
                 className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
                 aria-label="GitHub"
               >
                 <FaGithub size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/sanhehu/"
                 className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
               </a>
               <a
-                href="#"
+                href="https://sanhehu.atlassian.net/wiki/spaces/SHPB/overview"
                 className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
                 aria-label="Blog"
               >
@@ -311,15 +311,23 @@ export default function HomePage() {
               Let's Connect
             </h2>
             <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Ready to collaborate or discuss opportunities? You can{" "}
+              Ready to collaborate or discuss opportunities? Feel free to{" "}
               <a 
-                href="mailto:your-email@example.com" 
+                href="mailto:sanhe@sanhe.me"
                 className="text-secondary font-medium hover:text-secondary/80 transition-colors duration-200 underline decoration-secondary/50 hover:decoration-secondary/80"
               >
                 send me an email
-              </a> or{" "}
+              </a>,{" "}
               <a 
-                href="https://discord.gg/your-discord-invite" 
+                href="https://linkedin.com/in/sanhehu"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary font-medium hover:text-primary/80 transition-colors duration-200 underline decoration-primary/50 hover:decoration-primary/80"
+              >
+                connect on LinkedIn
+              </a>, or{" "}
+              <a 
+                href="https://discord.gg/PsRp27cpfB"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-highlight font-medium hover:text-highlight/80 transition-colors duration-200 underline decoration-highlight/50 hover:decoration-highlight/80"
@@ -332,14 +340,31 @@ export default function HomePage() {
           
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gradient-to-r from-cta-button to-primary hover:from-primary hover:to-highlight text-text-primary font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cta-button/40 flex items-center gap-2 border border-primary/20">
-              <Calendar size={20} />
-              Schedule a Meeting
-            </button>
-            <button className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-background font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 flex items-center gap-2">
+            <a
+              href="mailto:sanhe@sanhe.me"
+              className="bg-gradient-to-r from-cta-button to-primary hover:from-primary hover:to-highlight text-text-primary font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cta-button/40 flex items-center gap-2 border border-primary/20"
+            >
+              <Mail size={20} />
+              Send me Email
+            </a>
+            <a
+              href="https://linkedin.com/in/sanhehu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-transparent border-2 border-secondary text-secondary hover:bg-secondary hover:text-background font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-secondary/30 flex items-center gap-2"
+            >
+              <FaLinkedin size={20} />
+              Connect on LinkedIn
+            </a>
+            <a
+              href="https://discord.gg/PsRp27cpfB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-background font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 flex items-center gap-2"
+            >
               <MessageCircle size={20} />
               Join Discord Community
-            </button>
+            </a>
           </div>
         </div>
       </section>

@@ -5,6 +5,7 @@ import { BookOpen, Menu, X, Calendar, MessageCircle, Download, PenTool, GitCommi
 import { FaGithub, FaLinkedin, FaPython } from "react-icons/fa"
 import Link from "next/link"
 import Image from "next/image"
+import { Spotlight } from "@/components/ui/spotlight"
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -73,65 +74,12 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden">
-      {/* Enhanced Decorative Background Elements */}
+      {/* Spotlight Background Effect */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Animated main radial gradient */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[600px] bg-gradient-radial from-primary/12 via-primary/6 to-transparent rounded-full blur-3xl animate-pulse"></div>
-
-        {/* Moving secondary gradient */}
-        <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-gradient-radial from-secondary/10 via-secondary/5 to-transparent rounded-full blur-2xl animate-bounce" style={{ animationDuration: "8s" }}></div>
-
-        {/* Floating accent gradient */}
-        <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-gradient-radial from-highlight/8 via-highlight/4 to-transparent rounded-full blur-2xl" style={{ animation: "float 6s ease-in-out infinite" }}></div>
-
-        {/* Additional moving gradients */}
-        <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-gradient-radial from-primary/6 via-secondary/3 to-transparent rounded-full blur-xl" style={{ animation: "float 10s ease-in-out infinite reverse" }}></div>
-        <div className="absolute bottom-1/4 right-1/3 w-[250px] h-[250px] bg-gradient-radial from-highlight/5 via-primary/2 to-transparent rounded-full blur-2xl" style={{ animation: "drift 12s linear infinite" }}></div>
-
-        {/* Geometric shapes */}
-        <div className="absolute top-1/3 left-1/3 w-32 h-32 border border-primary/10 rounded-full" style={{ animation: "rotate 20s linear infinite" }}></div>
-        <div className="absolute bottom-1/3 right-1/4 w-24 h-24 border border-secondary/8 rotate-45" style={{ animation: "pulse 4s ease-in-out infinite" }}></div>
-        <div className="absolute top-2/3 left-1/6 w-20 h-20 border border-highlight/12 rounded-lg rotate-12" style={{ animation: "float 8s ease-in-out infinite" }}></div>
-
-        {/* Enhanced scattered particles */}
-        <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full opacity-60 animate-ping" style={{ animationDuration: "3s" }}></div>
-        <div className="absolute top-32 left-20 w-1 h-1 bg-primary rounded-full opacity-40 animate-pulse" style={{ animationDelay: "0.5s" }}></div>
-        <div className="absolute top-40 right-20 w-1.5 h-1.5 bg-secondary rounded-full opacity-50 animate-ping" style={{ animationDelay: "1s", animationDuration: "4s" }}></div>
-        <div className="absolute top-52 right-32 w-1 h-1 bg-secondary rounded-full opacity-30 animate-pulse" style={{ animationDelay: "1.5s" }}></div>
-        <div className="absolute top-60 left-1/4 w-1.5 h-1.5 bg-highlight rounded-full opacity-60 animate-ping" style={{ animationDelay: "2s", animationDuration: "5s" }}></div>
-        <div className="absolute top-72 left-1/3 w-1 h-1 bg-highlight rounded-full opacity-40 animate-pulse" style={{ animationDelay: "2.5s" }}></div>
-        <div className="absolute bottom-40 right-1/4 w-2 h-2 bg-contrast rounded-full opacity-40 animate-ping" style={{ animationDelay: "0.5s", animationDuration: "6s" }}></div>
-        <div className="absolute bottom-52 right-1/3 w-1 h-1 bg-contrast rounded-full opacity-30 animate-pulse" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute bottom-20 left-16 w-1.5 h-1.5 bg-primary rounded-full opacity-50 animate-ping" style={{ animationDelay: "1.5s", animationDuration: "4s" }}></div>
-        <div className="absolute bottom-32 left-24 w-1 h-1 bg-primary rounded-full opacity-40 animate-pulse" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/2 right-10 w-1 h-1 bg-secondary rounded-full opacity-50 animate-ping" style={{ animationDelay: "2.5s", animationDuration: "3s" }}></div>
-        <div className="absolute top-1/2 right-20 w-1.5 h-1.5 bg-secondary rounded-full opacity-30 animate-pulse" style={{ animationDelay: "3s" }}></div>
-
-        {/* Constellation lines */}
-        <div className="absolute top-1/4 left-1/2 w-px h-16 bg-gradient-to-b from-primary/20 to-transparent transform rotate-45" style={{ animation: "fade 8s ease-in-out infinite" }}></div>
-        <div className="absolute bottom-1/3 right-1/3 w-12 h-px bg-gradient-to-r from-secondary/15 to-transparent" style={{ animation: "fade 6s ease-in-out infinite", animationDelay: "2s" }}></div>
-        <div className="absolute top-2/3 left-1/4 w-px h-12 bg-gradient-to-b from-highlight/20 to-transparent transform -rotate-30" style={{ animation: "fade 10s ease-in-out infinite", animationDelay: "4s" }}></div>
+        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+        <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="#00bfff" />
+        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="#87ceeb" />
       </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        @keyframes drift {
-          0% { transform: translateX(0px); }
-          50% { transform: translateX(30px); }
-          100% { transform: translateX(0px); }
-        }
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes fade {
-          0%, 100% { opacity: 0; }
-          50% { opacity: 1; }
-        }
-      `}</style>
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">

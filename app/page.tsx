@@ -305,6 +305,32 @@ export default function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-background via-regular-button/10 to-background"></div>
         <div className="max-w-4xl mx-auto text-center relative">
+          {/* Section Title and Subtitle */}
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-text-primary via-primary to-highlight bg-clip-text text-transparent">
+              Let's Connect
+            </h2>
+            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+              Ready to collaborate or discuss opportunities? You can{" "}
+              <a 
+                href="mailto:your-email@example.com" 
+                className="text-secondary font-medium hover:text-secondary/80 transition-colors duration-200 underline decoration-secondary/50 hover:decoration-secondary/80"
+              >
+                send me an email
+              </a> or{" "}
+              <a 
+                href="https://discord.gg/your-discord-invite" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-highlight font-medium hover:text-highlight/80 transition-colors duration-200 underline decoration-highlight/50 hover:decoration-highlight/80"
+              >
+                join my Discord community
+              </a>{" "}
+              for direct messages and real-time conversations.
+            </p>
+          </div>
+          
+          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="bg-gradient-to-r from-cta-button to-primary hover:from-primary hover:to-highlight text-text-primary font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cta-button/40 flex items-center gap-2 border border-primary/20">
               <Calendar size={20} />

@@ -1,9 +1,90 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, Github, ExternalLink } from "lucide-react"
+import { ArrowLeft, Globe, BookOpen, Video, FileText } from "lucide-react"
+import { FaGithub } from "react-icons/fa"
+
+// Project data array - Easy to manage and extend
+const projects = [
+  // {
+  //   enabled: true,
+  //   title: "AWS Infrastructure Automation",
+  //   description: "Comprehensive Infrastructure as Code solution using AWS CDK and Python. Automates deployment of scalable web applications with CI/CD pipelines, monitoring, and security best practices. Supports multi-environment deployments with zero-downtime updates.",
+  //   links: [
+  //     { type: "github", url: "https://github.com/MacHu-GWU/aws-cdk-example", icon: FaGithub },
+  //     { type: "demo", url: "https://demo.example.com", icon: Globe },
+  //     { type: "docs", url: "https://docs.example.com", icon: BookOpen },
+  //   ],
+  //   tags: ["Python", "AWS", "CDK", "DevOps", "Infrastructure"]
+  // },
+  // {
+  //   enabled: true,
+  //   title: "Data Pipeline Framework",
+  //   description: "High-performance ETL framework for processing large-scale data. Features parallel processing, error handling, data validation, and real-time monitoring. Designed for enterprise environments with support for various data sources and destinations.",
+  //   links: [
+  //     { type: "github", url: "https://github.com/MacHu-GWU/data-pipeline", icon: FaGithub },
+  //     { type: "demo", url: "https://pipeline-demo.com", icon: Globe },
+  //     { type: "video", url: "https://youtube.com/watch?v=example", icon: Video },
+  //   ],
+  //   tags: ["Python", "Apache Spark", "Data Engineering", "ETL", "Big Data"]
+  // },
+  // {
+  //   enabled: true,
+  //   title: "Microservices API Gateway",
+  //   description: "Production-ready API gateway built with FastAPI and Docker. Includes rate limiting, authentication, load balancing, service discovery, and comprehensive logging. Deployed on Kubernetes with horizontal scaling capabilities.",
+  //   links: [
+  //     { type: "github", url: "https://github.com/MacHu-GWU/api-gateway", icon: FaGithub },
+  //     { type: "demo", url: "https://api.example.com", icon: Globe },
+  //     { type: "docs", url: "https://api-docs.example.com", icon: FileText },
+  //   ],
+  //   tags: ["Python", "FastAPI", "Docker", "Kubernetes", "Microservices"]
+  // },
+  // {
+  //   enabled: true,
+  //   title: "Machine Learning Platform",
+  //   description: "End-to-end ML platform for model training, deployment, and monitoring. Features automated model versioning, A/B testing, performance tracking, and seamless integration with popular ML frameworks. Supports both batch and real-time inference.",
+  //   links: [
+  //     { type: "github", url: "https://github.com/MacHu-GWU/ml-platform", icon: FaGithub },
+  //     { type: "demo", url: "https://ml-demo.example.com", icon: Globe },
+  //     { type: "docs", url: "https://ml-docs.example.com", icon: BookOpen },
+  //   ],
+  //   tags: ["Python", "TensorFlow", "PyTorch", "MLOps", "AI/ML"]
+  // },
+  // {
+  //   enabled: true,
+  //   title: "Real-time Analytics Dashboard",
+  //   description: "Interactive dashboard for real-time business intelligence. Built with React and D3.js, featuring customizable widgets, drill-down capabilities, and live data streaming. Integrates with multiple data sources and provides role-based access control.",
+  //   links: [
+  //     { type: "github", url: "https://github.com/MacHu-GWU/analytics-dashboard", icon: FaGithub },
+  //     { type: "demo", url: "https://dashboard-demo.example.com", icon: Globe },
+  //     { type: "video", url: "https://youtube.com/watch?v=dashboard-demo", icon: Video },
+  //   ],
+  //   tags: ["React", "TypeScript", "D3.js", "Analytics", "Dashboard"]
+  // },
+  // {
+  //   enabled: true,
+  //   title: "Distributed Cache System",
+  //   description: "High-performance distributed caching solution with Redis clustering. Implements consistent hashing, automatic failover, data replication, and memory optimization. Provides client libraries for multiple programming languages with built-in monitoring.",
+  //   links: [
+  //     { type: "github", url: "https://github.com/MacHu-GWU/distributed-cache", icon: FaGithub },
+  //     { type: "docs", url: "https://cache-docs.example.com", icon: FileText },
+  //     { type: "demo", url: "https://cache-demo.example.com", icon: Globe },
+  //   ],
+  //   tags: ["Redis", "Go", "Distributed Systems", "Caching", "Performance"]
+  // },
+  // Add more projects here, or comment out projects to disable them
+  // {
+  //   enabled: false, // This project will not be displayed
+  //   title: "Disabled Project",
+  //   description: "This project is commented out and won't appear",
+  //   links: [],
+  //   tags: []
+  // },
+]
 
 export default function ProjectsPage() {
+  // Filter only enabled projects
+  const enabledProjects = projects.filter(project => project.enabled)
   return (
     <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden">
       {/* Background Elements */}
@@ -53,37 +134,60 @@ export default function ProjectsPage() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((project) => (
+            {enabledProjects.map((project, index) => (
               <div
-                key={project}
+                key={index}
                 className="bg-regular-button/80 backdrop-blur-sm border border-primary/30 rounded-xl p-6 hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:bg-regular-button/90 group"
               >
+                {/* Project Header with Title and Links */}
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-semibold text-primary group-hover:text-highlight transition-colors duration-300">
-                    Project {project}
+                  <h3 className="text-xl font-semibold text-primary group-hover:text-highlight transition-colors duration-300 flex-1 mr-4">
+                    {project.title}
                   </h3>
-                  <div className="flex gap-2">
-                    <a href="#" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                      <Github size={20} />
-                    </a>
-                    <a href="#" className="text-text-secondary hover:text-secondary transition-colors duration-200">
-                      <ExternalLink size={20} />
-                    </a>
+                  <div className="flex gap-2 flex-shrink-0">
+                    {project.links.map((link, linkIndex) => {
+                      const IconComponent = link.icon
+                      return (
+                        <a
+                          key={linkIndex}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-text-secondary hover:text-primary transition-colors duration-200 hover:scale-110"
+                          title={link.type}
+                        >
+                          <IconComponent size={20} />
+                        </a>
+                      )
+                    })}
                   </div>
                 </div>
-                <p className="text-text-secondary mb-4 group-hover:text-text-primary transition-colors duration-300">
-                  Description of the project and its key features. This is a placeholder for actual project content.
+                
+                {/* Project Description */}
+                <p className="text-text-secondary mb-4 group-hover:text-text-primary transition-colors duration-300 leading-relaxed">
+                  {project.description}
                 </p>
+                
+                {/* Project Tags */}
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30">
-                    Python
-                  </span>
-                  <span className="px-2 py-1 bg-secondary/20 text-secondary text-xs rounded-full border border-secondary/30">
-                    TypeScript
-                  </span>
-                  <span className="px-2 py-1 bg-highlight/20 text-highlight text-xs rounded-full border border-highlight/30">
-                    React
-                  </span>
+                  {project.tags.map((tag, tagIndex) => {
+                    // Cycle through theme colors for tags
+                    const colorClasses = [
+                      "bg-primary/20 text-primary border-primary/30",
+                      "bg-secondary/20 text-secondary border-secondary/30", 
+                      "bg-highlight/20 text-highlight border-highlight/30"
+                    ]
+                    const colorClass = colorClasses[tagIndex % colorClasses.length]
+                    
+                    return (
+                      <span
+                        key={tagIndex}
+                        className={`px-2 py-1 text-xs rounded-full border ${colorClass} transition-colors duration-200 hover:opacity-80`}
+                      >
+                        {tag}
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
             ))}

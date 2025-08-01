@@ -1,22 +1,22 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowLeft, Globe, BookOpen, Video, FileText } from "lucide-react"
+import { ArrowLeft, Globe, BookOpen, Video, FileText, Eye, ArrowRight } from "lucide-react"
 import { FaGithub } from "react-icons/fa"
 
 // Project data array - Easy to manage and extend
 const projects = [
-  // {
-  //   enabled: true,
-  //   title: "AWS Infrastructure Automation",
-  //   description: "Comprehensive Infrastructure as Code solution using AWS CDK and Python. Automates deployment of scalable web applications with CI/CD pipelines, monitoring, and security best practices. Supports multi-environment deployments with zero-downtime updates.",
-  //   links: [
-  //     { type: "github", url: "https://github.com/MacHu-GWU/aws-cdk-example", icon: FaGithub },
-  //     { type: "demo", url: "https://demo.example.com", icon: Globe },
-  //     { type: "docs", url: "https://docs.example.com", icon: BookOpen },
-  //   ],
-  //   tags: ["Python", "AWS", "CDK", "DevOps", "Infrastructure"]
-  // },
+  {
+    enabled: true,
+    title: "The 30 Voice, 30 AI Solutions for Professionals Challenge",
+    description: "A build-in-public challenge: interviewing 30 professional leaders and co-creating 30 AI solutions together.",
+    links: [
+      { type: "details", url: "/projects/30-voice-ai-solution-challenge", icon: Eye, internal: true },
+      // { type: "github", url: "https://github.com/MacHu-GWU/aws-cdk-example", icon: FaGithub },
+      // { type: "docs", url: "https://docs.example.com", icon: BookOpen },
+    ],
+    tags: ["Build in Public", "AI Products", "Innovation"]
+  },
   // {
   //   enabled: true,
   //   title: "Data Pipeline Framework",
@@ -147,18 +147,52 @@ export default function ProjectsPage() {
                   <div className="flex gap-2 flex-shrink-0">
                     {project.links.map((link, linkIndex) => {
                       const IconComponent = link.icon
-                      return (
-                        <a
-                          key={linkIndex}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-text-secondary hover:text-primary transition-colors duration-200 hover:scale-110"
-                          title={link.type}
-                        >
-                          <IconComponent size={20} />
-                        </a>
-                      )
+                      const isFirstLink = linkIndex === 0
+                      const isInternal = link.internal || link.url.startsWith('/')
+                      
+                      if (isFirstLink) {
+                        // Special "View Details" button for first link
+                        return (
+                          <Link
+                            key={linkIndex}
+                            href={link.url}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-primary to-secondary text-background text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 group"
+                            title="View Project Details"
+                          >
+                            <IconComponent size={16} className="group-hover:scale-110 transition-transform duration-200" />
+                            <span className="hidden sm:inline">View</span>
+                          </Link>
+                        )
+                      } else {
+                        // Regular icon links for other links
+                        const baseStyles = "transition-all duration-200 hover:scale-110 p-1.5 rounded-lg text-text-secondary hover:text-primary hover:bg-primary/5"
+                        
+                        if (isInternal) {
+                          return (
+                            <Link
+                              key={linkIndex}
+                              href={link.url}
+                              className={baseStyles}
+                              title={link.type}
+                            >
+                              <IconComponent size={18} />
+                            </Link>
+                          )
+                        } else {
+                          return (
+                            <a
+                              key={linkIndex}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={baseStyles}
+                              title={link.type}
+                            >
+                              <IconComponent size={18} />
+                            </a>
+                          )
+                        }
+                      }
                     })}
                   </div>
                 </div>

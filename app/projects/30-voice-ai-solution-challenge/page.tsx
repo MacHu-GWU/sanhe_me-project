@@ -2,65 +2,11 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, X } from "lucide-react"
 import { projectData, ProjectSection } from "./data"
+import MarkdownRenderer from "@/components/ui/markdown-renderer"
 
-// Simple markdown-to-HTML converter for basic formatting
-function parseMarkdown(text: string): string {
-  let html = text
-    // Headers (process in order: h3, h2, h1)
-    .replace(/^### (.+)$/gm, '<h3 class="text-lg font-semibold text-primary mb-3 mt-6">$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2 class="text-xl font-bold text-primary mb-4 mt-8">$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1 class="text-2xl font-bold text-primary mb-4 mt-6">$1</h1>')
-    // Bold and italic
-    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-text-primary">$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-    // Code blocks (basic)
-    .replace(/`([^`]+)`/g, '<code class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">$1</code>')
-
-  // Handle lists
-  const lines = html.split('\n')
-  let processedLines: string[] = []
-  let inList = false
-  
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i]
-    const isListItem = line.match(/^- (.+)$/)
-    
-    if (isListItem) {
-      if (!inList) {
-        processedLines.push('<ul class="list-disc list-inside space-y-1 mb-4 ml-4">')
-        inList = true
-      }
-      processedLines.push(`<li class="mb-1 text-text-secondary">${isListItem[1]}</li>`)
-    } else {
-      if (inList) {
-        processedLines.push('</ul>')
-        inList = false
-      }
-      processedLines.push(line)
-    }
-  }
-  
-  if (inList) {
-    processedLines.push('</ul>')
-  }
-  
-  // Rejoin and handle paragraphs
-  return processedLines
-    .join('\n')
-    .split('\n\n')
-    .map(paragraph => {
-      paragraph = paragraph.trim()
-      if (!paragraph) return ''
-      if (paragraph.startsWith('<h') || paragraph.startsWith('<ul') || paragraph.startsWith('<li')) {
-        return paragraph
-      }
-      return `<p class="text-text-secondary leading-relaxed mb-4">${paragraph}</p>`
-    })
-    .filter(p => p)
-    .join('\n')
-}
 
 export default function VoiceAIChallengePage() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null)
@@ -137,12 +83,29 @@ export default function VoiceAIChallengePage() {
           </Link>
           
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-text-primary via-primary to-highlight bg-clip-text text-transparent">
-            30-Day Voice AI Solution Challenge
+            The 30 Voice, 30 AI Solutions for Professionals Challenge
           </h1>
           <p className="text-xl text-text-secondary mb-8">
-            Join developers worldwide in building the future of{" "}
-            <span className="text-secondary">voice AI technology</span>
+            A build-in-public challenge: interviewing <span className="text-secondary">30 professional leaders</span> and co-creating <span className="text-secondary">30 AI solutions</span> together.
           </p>
+        </div>
+      </section>
+
+      {/* Project Cover Image */}
+      <section className="pb-8 px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative rounded-2xl overflow-hidden border border-primary/20 shadow-lg shadow-primary/10 bg-gradient-to-br from-regular-button/60 to-regular-button/40 backdrop-blur-sm">
+            <Image
+              src="/The-30-Voice-30-AI-Solutions-for-Professionals-Challenge-Cover-Image.webp"
+              alt="The 30 Voice, 30 AI Solutions for Professionals Challenge - Visual Overview"
+              width={1200}
+              height={600}
+              className="w-full h-auto object-cover"
+              priority
+            />
+            {/* Optional overlay gradient for better text contrast if needed */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none"></div>
+          </div>
         </div>
       </section>
 
@@ -301,12 +264,7 @@ export default function VoiceAIChallengePage() {
             {/* Modal Body */}
             <div className="overflow-y-auto max-h-[60vh] p-6">
               {selectedSection && (
-                <div 
-                  className="prose prose-sm max-w-none"
-                  dangerouslySetInnerHTML={{ 
-                    __html: parseMarkdown(selectedSection.content) 
-                  }}
-                />
+                <MarkdownRenderer content={selectedSection.content} />
               )}
             </div>
           </div>

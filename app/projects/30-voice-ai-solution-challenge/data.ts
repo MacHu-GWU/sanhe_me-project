@@ -11,253 +11,122 @@ export interface ProjectSection {
 
 export const projectData: ProjectSection[] = [
   {
-    id: "challenge-overview",
-    title: "Challenge Overview",
-    description: "Introducing the 30-Day Voice AI Solution Challenge - a comprehensive initiative to build production-ready voice AI solutions.",
+    id: "whats-this-challenge-about",
+    title: "What's This Challenge About?",
+    description: "30 professionals, 30 custom AI tools, 18 months of transparent development - my most ambitious build-in-public project yet.",
     icon: Target,
     content: `
-# Challenge Overview
+**12-18 months. $30K budget. 30 industry professionals. 30 free AI tools.**
 
-The **30-Day Voice AI Solution Challenge** is an intensive program designed to accelerate the development of cutting-edge voice AI solutions. This challenge brings together developers, researchers, and innovators to create meaningful voice-powered applications that solve real-world problems.
+I'm launching the most ambitious build-in-public challenge of my career, and I need your help to make it happen.
 
-## Key Objectives
+I'm going to select 30 workplace professionals from my LinkedIn network—spanning every industry I can reach—for deep-dive interviews about how AI could actually transform their daily work. Not surface-level conversations, but real exploration into the challenges that keep you up at night and the bottlenecks that eat your time.
 
-- Build production-ready voice AI applications
-- Explore latest voice recognition and synthesis technologies
-- Foster innovation in conversational AI
-- Create solutions that enhance user accessibility and experience
+**Here's my promise to each participant:** I'll build you a custom AI tool, completely free to use, based on exactly what you need. Then we'll co-author a blog post about the entire journey—your insights, my development process, everything transparent.
 
-## Challenge Structure
-
-The challenge is structured into four weekly phases:
-- **Week 1**: Foundation and Architecture
-- **Week 2**: Core Voice Processing Implementation  
-- **Week 3**: AI Integration and Intelligence
-- **Week 4**: Testing, Optimization, and Deployment
-
-Each phase includes practical exercises, peer collaboration, and expert mentorship to ensure participants gain hands-on experience with enterprise-grade voice AI technologies.
+**The bigger picture?** I want to prove that AI can solve real problems for real people, not just impress other technologists.
     `
   },
   {
-    id: "technical-approach",
-    title: "Technical Approach",
-    description: "Leveraging cutting-edge technologies including speech recognition, natural language processing, and real-time voice synthesis.",
+    id: "why-am-i-taking-on-this-challenge",
+    title: "Why Am I Taking On This Challenge?",
+    description: "From building AI tools only techies can use to creating solutions that actually help real professionals solve real problems.",
     icon: Bot,
     content: `
-# Technical Approach
+As a solutions architect, I've been building AI tools since before ChatGPT made headlines. I've created hundreds of personal automation tools that make my life easier. But here's the problem I keep running into:
 
-Our technical architecture combines multiple state-of-the-art technologies to deliver robust voice AI solutions.
+When I show these tools to friends and colleagues, I consistently hear:
 
-## Core Technologies
+- "Amazing for you, but way too complex for me"
+- "I wouldn't even know where to start"
+- "Cool demo, but how does this help *my* actual job?"
 
-### Speech Processing Pipeline
-- **Real-time Speech Recognition**: Integration with Whisper API for accurate speech-to-text conversion
-- **Voice Activity Detection**: Smart detection of speech segments to optimize processing
-- **Noise Reduction**: Advanced audio preprocessing for improved recognition accuracy
+**That's my wake-up call.** Technical people build for technical people. I need to step outside my comfort zone and truly understand how non-technical professionals work, think, and solve problems.
 
-### Natural Language Understanding
-- **Intent Recognition**: Custom NLU models for understanding user intentions
-- **Context Management**: Stateful conversation tracking for multi-turn dialogues  
-- **Entity Extraction**: Identification and extraction of key information from user input
-
-### Voice Synthesis
-- **Neural Text-to-Speech**: Integration with ElevenLabs for natural-sounding voice generation
-- **Voice Cloning**: Ability to create custom voice models for personalized experiences
-- **Emotion and Tone Control**: Dynamic voice modulation based on context and user preferences
-
-## Architecture Patterns
-
-The solution follows microservices architecture with:
-- **API Gateway**: Centralized request routing and authentication
-- **Voice Processing Service**: Dedicated service for audio processing
-- **AI Orchestration Layer**: Coordinates between different AI services
-- **Real-time Communication**: WebSocket connections for low-latency voice interactions
+We're living in an era where the "**Build in Public**" philosophy is flourishing, and I want to embrace this movement through my challenge. I believe in the power of transparent development - sharing not just the final products, but the entire journey: the struggles, the breakthroughs, the failed experiments, and the lessons learned. By making every aspect of this development process completely open and accessible, I hope to contribute to the growing community of builders who believe that openness leads to better solutions and stronger connections.
     `
   },
   {
-    id: "participant-experience",
-    title: "Participant Experience",
-    description: "Creating an engaging and educational journey for developers at all skill levels, from beginners to advanced practitioners.",
+    id: "whats-in-it-for-participants",
+    title: "What's In It For Participants?",
+    description: "Get a free custom AI tool built for your specific needs, plus potential commercial benefits and co-authoring opportunities.",
     icon: Users,
     content: `
-# Participant Experience
+I deeply understand that time is every professional's most precious resource, so I need to ensure this interview is not only valuable for me, but also provides tangible returns for each participant. I believe true collaboration should be mutually beneficial, not one-sided information extraction. This challenge is designed from the ground up to create unique and lasting value for every guest.
 
-The challenge is designed to provide an inclusive and comprehensive learning experience for participants across all skill levels.
+- 🎯 **Custom AI Tool:** Each person will receive a personalized AI web application, specifically designed to solve their daily work challenges. I'll provide each user with $20 monthly free AI service credits to ensure they can use it long-term without burden.
+- 💰 **Commercial Product Benefits:** If a commercial product is incubated based on a guest's ideas and industry knowledge, that guest will receive three years of free usage rights - a substantial return on their contribution.
+- 📝 **Co-creation Opportunities:** With the guest's consent, we'll co-author blog posts sharing our creativity, industry insights, and development process, helping more people understand AI's application potential in their field.
 
-## Learning Journey
-
-### Beginner Track
-- **Fundamentals Workshop**: Introduction to voice AI concepts and basic implementation
-- **Guided Tutorials**: Step-by-step implementation guides with code examples
-- **Mentorship Program**: Pairing with experienced developers for guidance and support
-
-### Intermediate Track  
-- **Advanced Implementations**: Complex voice AI patterns and optimization techniques
-- **Integration Challenges**: Working with multiple AI services and APIs
-- **Performance Optimization**: Techniques for reducing latency and improving accuracy
-
-### Advanced Track
-- **Custom Model Training**: Building and fine-tuning voice recognition models
-- **Research Integration**: Implementing cutting-edge research papers and techniques
-- **Scalability Engineering**: Designing solutions for enterprise-scale deployments
-
-## Community Support
-
-### Collaboration Platforms
-- **Discord Community**: 24/7 support and peer-to-peer learning
-- **Code Review Sessions**: Weekly group sessions for sharing progress and getting feedback
-- **Expert AMAs**: Regular Q&A sessions with industry leaders and researchers
-
-### Resources and Tools
-- **Comprehensive Documentation**: Detailed guides, API references, and troubleshooting tips
-- **Code Templates**: Starter projects and boilerplate code for different use cases
-- **Testing Frameworks**: Tools for evaluating voice AI performance and accuracy
+These commitments ensure every collaboration is truly win-win, where participants not only contribute valuable industry insights but also receive practical technical solutions and brand exposure opportunities.
     `
   },
   {
-    id: "innovation-goals",
-    title: "Innovation Goals",
-    description: "Pushing the boundaries of what's possible with voice AI technology and creating solutions that make a real-world impact.",
+    id: "my-specific-goals-and-timeline",
+    title: "My Specific Goals & Timeline",
+    description: "$30K investment, 12-18 month timeline, and a clear roadmap from interviews to commercial product validation.",
     icon: Rocket,
     content: `
-# Innovation Goals
+This challenge isn't a spontaneous idea, but a strategic personal investment I've carefully planned. Through these 30 in-depth interviews, I hope to not only expand my understanding of different industries, but more importantly, validate AI technology's practical application potential across various fields. This is an important step in my transformation from pure technical expert to product innovator - each goal is carefully designed to ensure the entire process is both challenging and executable.
 
-The challenge aims to drive innovation in voice AI technology while creating practical solutions that address real-world needs.
+- 📅 **Timeline:**
+  - Complete **30** in-depth **interviews** within **12-18 months**
+  - Build and deliver **30** customized AI **products**
+  - Select valuable solutions for continued optimization and iteration
+- 💡 **Product Development Exploration:** Each custom tool will be evaluated for its commercialization potential. I'll attempt to develop the most valuable solutions into commercial tools for the public.
+- 💰 **Resource Investment:** I've allocated a **$30,000** budget for this project to cover all technical costs and service fees throughout the process.
 
-## Innovation Focus Areas
-
-### Accessibility Solutions
-- **Voice Navigation**: Hands-free interfaces for users with mobility limitations
-- **Language Learning**: Conversational AI tutors for pronunciation and fluency training
-- **Elderly Care**: Voice companions for seniors with intuitive, empathetic interactions
-
-### Enterprise Applications
-- **Voice Analytics**: Real-time sentiment analysis and conversation insights
-- **Automated Support**: Intelligent voice assistants for customer service
-- **Meeting Intelligence**: Voice-powered note-taking and action item extraction
-
-### Emerging Use Cases
-- **Multimodal Interactions**: Combining voice with visual and haptic feedback
-- **Edge Computing**: Optimized voice AI for resource-constrained devices
-- **Cross-lingual Communication**: Real-time voice translation and interpretation
-
-## Innovation Methodology
-
-### Rapid Prototyping
-- **Daily Standups**: Quick progress sharing and obstacle identification
-- **Weekly Demos**: Showcasing incremental improvements and breakthroughs
-- **Iterative Development**: Fast feedback loops for continuous improvement
-
-### Research Integration
-- **Paper Implementation**: Translating latest research into practical applications
-- **Experimental Features**: Testing bleeding-edge techniques in real scenarios
-- **Open Source Contributions**: Sharing innovations with the broader community
-
-The goal is not just to build functional applications, but to pioneer new approaches that advance the entire field of voice AI technology.
+This investment scale reflects my serious commitment to this challenge while ensuring I have sufficient resources to provide high-quality solutions for each participant.
     `
   },
   {
-    id: "expected-outcomes",
-    title: "Expected Outcomes",
-    description: "Defining success metrics and the lasting impact we aim to achieve through this collaborative challenge.",
+    id: "how-ill-find-my-guests",
+    title: "How I'll Find My Guests",
+    description: "30 targeted industries, open applications, network recruitment, and complete transparency in the selection process.",
     icon: Award,
     content: `
-# Expected Outcomes
+Finding the right guests is crucial for this challenge's success. Rather than random interviews, I want to ensure coverage of as many industry sectors and professional roles as possible to gain the most comprehensive market insights. I've carefully developed a detailed list of 30 different professional domains, covering a broad range from traditional industries to emerging fields. I hope this systematic approach will help me build a truly diverse knowledge system.
 
-The 30-Day Voice AI Solution Challenge is designed to deliver tangible results for participants and the broader AI community.
+- 🎯 [**30 Professional Domains List**](https://docs.google.com/spreadsheets/d/1vIl5MCGvksAMShWFTbFCZIHjOuZAOsauXQNFuAxSeuE/edit?usp=sharing)**:** I've preset 30 different professional domains, including but not limited to financial services, healthcare, education & training, manufacturing, retail & e-commerce, legal services, human resources, marketing, and other key industries.
+- 🌐 **Open Participation Mechanism:** Anyone can view my public list and [actively apply to participate](https://forms.gle/iPWreajqos52gXpo8) or recommend suitable candidates. I believe in the power of crowdsourcing to help me find the most suitable guests.
+- 🤝 **Network-Driven Recruitment:** I'll actively seek professionals within my LinkedIn network or ask friends to recommend industry experts they know.
+- 📊 **Transparent Tracking System:** Real-time updates on which domains have completed interviews, which are in progress, and which are still seeking suitable candidates, making the entire process completely transparent.
 
-## Participant Outcomes
-
-### Skill Development
-- **Technical Proficiency**: Hands-on experience with production-grade voice AI technologies
-- **System Design**: Understanding of scalable architecture patterns for voice applications
-- **Problem-solving**: Practical experience debugging and optimizing voice AI systems
-
-### Career Impact
-- **Portfolio Projects**: Deployable applications that demonstrate advanced voice AI capabilities
-- **Industry Recognition**: Certificates and recommendations from challenge mentors
-- **Network Expansion**: Connections with peers, mentors, and potential employers in the AI field
-
-### Innovation Contributions
-- **Open Source Projects**: New libraries and tools for the voice AI community
-- **Research Publications**: Documentation of novel approaches and experimental results
-- **Patent Applications**: Intellectual property for breakthrough innovations
-
-## Community Impact
-
-### Knowledge Sharing
-- **Documentation Library**: Comprehensive guides and tutorials for future developers
-- **Video Tutorials**: Recorded sessions and presentations for ongoing education
-- **Case Studies**: Detailed analysis of successful implementations and lessons learned
-
-### Technology Advancement
-- **Performance Benchmarks**: Standardized metrics for evaluating voice AI solutions
-- **Best Practices**: Established patterns for common voice AI implementation challenges
-- **Tool Ecosystem**: Enhanced developer tools and frameworks for voice AI development
-
-## Long-term Vision
-
-The challenge serves as a catalyst for:
-- **Industry Standards**: Contributing to the development of voice AI best practices
-- **Educational Programs**: Informing curriculum development for AI education
-- **Startup Incubation**: Supporting the creation of new voice AI companies and products
-
-Success will be measured not just by the applications built during the 30 days, but by the lasting impact on participants' careers and the advancement of voice AI technology as a whole.
+This structured yet open selection mechanism ensures both breadth of coverage and finding truly representative figures for each field.
     `
   },
   {
-    id: "join-us",
-    title: "Join the Challenge",
-    description: "Ready to be part of this groundbreaking initiative? Learn how to participate and make your mark in voice AI innovation.",
+    id: "building-in-public-strategy",
+    title: "Building In Public Strategy",
+    description: "Every line of code, every decision, every setback shared openly - true transparency from start to finish.",
     icon: MessageSquare,
     content: `
-# Join the Challenge
+My understanding of the "Build in Public" philosophy goes far beyond simply sharing final results. I believe truly valuable sharing should include the entire thought process, decision logic, difficulties encountered, and problem-solving approaches. This deep transparency not only helps other technical professionals learn, but more importantly, builds genuine trust relationships. Through this approach, I hope everyone following this challenge can gain inspiration, whether they're technical experts or industry practitioners.
 
-The 30-Day Voice AI Solution Challenge is open to developers, researchers, and innovators worldwide. Here's how you can be part of this exciting journey.
+- 🌐 **Dedicated Website:** Create an independent website to publish all related documentation, guest lists, project progress, and blog posts, allowing anyone to track the entire challenge's development.
+- 💻 **Full Open Source:**
+  - 30 custom AI applications will be deployed as independent web applications
+  - Each project corresponds to a public GitHub repository
+  - All code, technical architecture, and development process completely open source
+- 🧠 **Transparent Thinking Process:** Regularly share my decision-making logic, technical choice reasoning, setbacks encountered, and solution iteration processes, allowing readers to follow my thought patterns.
+- 📝 **Continuous Insight Sharing:** Beyond technical details, I'll share business insights learned from various industries, user needs analysis, and cutting-edge AI application thinking.
 
-## How to Participate
+This comprehensive open development approach not only makes the entire process more educational but also provides valuable reference cases for AI technology applications across industries.
+    `
+  },
+  {
+    id: "whats-next",
+    title: "What's Next",
+    description: "Ready to join, refer someone, or just follow along? Here's exactly how to get involved in this journey.",
+    icon: MessageSquare,
+    content: `
+Having read this far, I imagine you might be interested in this challenge or have questions. Whether you want to **join me as a guest**, **follow the development story**, or **explore what we've built**, I've prepared comprehensive resources to help you get involved.
 
-### Registration Process
-1. **Application Form**: Complete the online application with your background and goals
-2. **Skill Assessment**: Brief technical evaluation to ensure proper track placement
-3. **Community Access**: Join our Discord server and introduction session
-4. **Kickoff Event**: Attend the virtual launch event and meet your cohort
+For detailed information about participation, timelines, and answers to common questions, please visit our comprehensive FAQ section:
 
-### Prerequisites
-- **Programming Experience**: Comfortable with Python or JavaScript/TypeScript
-- **Basic AI Knowledge**: Understanding of machine learning concepts (helpful but not required)
-- **Development Environment**: Ability to set up local development tools and APIs
-- **Time Commitment**: Approximately 10-15 hours per week for active participation
+**→** [**30 Voices, 30 AI Products Challenge - FAQ**](https://sanhehu.atlassian.net/wiki/spaces/SHPB/pages/530251781/30+Voices+30+AI+Products+Challenge+-+FAQ)
 
-## What's Provided
-
-### Resources and Support
-- **Starter Kits**: Pre-configured development environments and code templates
-- **API Credits**: Free access to premium voice AI services and APIs
-- **Expert Mentorship**: Weekly 1:1 sessions with industry professionals
-- **Community Support**: 24/7 access to peer help and collaborative problem-solving
-
-### Learning Materials
-- **Video Courses**: Comprehensive tutorials on voice AI fundamentals and advanced topics
-- **Technical Documentation**: Detailed guides for implementing common voice AI patterns  
-- **Code Examples**: Production-quality implementations across different use cases
-- **Research Papers**: Curated collection of relevant academic and industry research
-
-## Application Deadlines
-
-### Current Cohort
-- **Early Bird Registration**: Special benefits for applications submitted in the first week
-- **Regular Registration**: Standard application period with full access to all resources
-- **Late Registration**: Limited spots available with condensed onboarding process
-
-### Future Cohorts
-Due to high demand, we're planning quarterly cohorts. Join our mailing list to be notified about upcoming sessions and special programs.
-
-## Ready to Transform Voice AI?
-
-This is your opportunity to be at the forefront of voice AI innovation. Whether you're looking to advance your career, contribute to cutting-edge research, or build the next generation of voice-powered applications, the 30-Day Voice AI Solution Challenge provides the platform, resources, and community you need to succeed.
-
-**Apply now and join hundreds of developers who are shaping the future of human-computer interaction through voice AI technology.**
+This is just the beginning of an exciting journey. Through these 30 in-depth conversations, we'll not only create valuable AI tools but also open new possibilities for AI technology applications across industries. Looking forward to collaborating with you!
     `
   }
 ]

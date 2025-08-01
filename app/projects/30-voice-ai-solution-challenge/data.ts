@@ -1,4 +1,4 @@
-import { Bot, Target, Users, Rocket, Award, MessageSquare } from "lucide-react"
+import { HelpCircle, Lightbulb, HandHeart, Calendar, Search, Code, ArrowRight } from "lucide-react"
 import { LucideIcon } from "lucide-react"
 
 export interface ProjectSection {
@@ -14,7 +14,7 @@ export const projectData: ProjectSection[] = [
     id: "whats-this-challenge-about",
     title: "What's This Challenge About?",
     description: "30 professionals, 30 custom AI tools, 18 months of transparent development - my most ambitious build-in-public project yet.",
-    icon: Target,
+    icon: Lightbulb,
     content: `
 **12-18 months. $30K budget. 30 industry professionals. 30 free AI tools.**
 
@@ -31,7 +31,7 @@ I'm going to select 30 workplace professionals from my LinkedIn network—spanni
     id: "why-am-i-taking-on-this-challenge",
     title: "Why Am I Taking On This Challenge?",
     description: "From building AI tools only techies can use to creating solutions that actually help real professionals solve real problems.",
-    icon: Bot,
+    icon: HelpCircle,
     content: `
 As a solutions architect, I've been building AI tools since before ChatGPT made headlines. I've created hundreds of personal automation tools that make my life easier. But here's the problem I keep running into:
 
@@ -50,7 +50,7 @@ We're living in an era where the "**Build in Public**" philosophy is flourishing
     id: "whats-in-it-for-participants",
     title: "What's In It For Participants?",
     description: "Get a free custom AI tool built for your specific needs, plus potential commercial benefits and co-authoring opportunities.",
-    icon: Users,
+    icon: HandHeart,
     content: `
 I deeply understand that time is every professional's most precious resource, so I need to ensure this interview is not only valuable for me, but also provides tangible returns for each participant. I believe true collaboration should be mutually beneficial, not one-sided information extraction. This challenge is designed from the ground up to create unique and lasting value for every guest.
 
@@ -65,7 +65,7 @@ These commitments ensure every collaboration is truly win-win, where participant
     id: "my-specific-goals-and-timeline",
     title: "My Specific Goals & Timeline",
     description: "$30K investment, 12-18 month timeline, and a clear roadmap from interviews to commercial product validation.",
-    icon: Rocket,
+    icon: Calendar,
     content: `
 This challenge isn't a spontaneous idea, but a strategic personal investment I've carefully planned. Through these 30 in-depth interviews, I hope to not only expand my understanding of different industries, but more importantly, validate AI technology's practical application potential across various fields. This is an important step in my transformation from pure technical expert to product innovator - each goal is carefully designed to ensure the entire process is both challenging and executable.
 
@@ -83,7 +83,7 @@ This investment scale reflects my serious commitment to this challenge while ens
     id: "how-ill-find-my-guests",
     title: "How I'll Find My Guests",
     description: "30 targeted industries, open applications, network recruitment, and complete transparency in the selection process.",
-    icon: Award,
+    icon: Search,
     content: `
 Finding the right guests is crucial for this challenge's success. Rather than random interviews, I want to ensure coverage of as many industry sectors and professional roles as possible to gain the most comprehensive market insights. I've carefully developed a detailed list of 30 different professional domains, covering a broad range from traditional industries to emerging fields. I hope this systematic approach will help me build a truly diverse knowledge system.
 
@@ -99,7 +99,7 @@ This structured yet open selection mechanism ensures both breadth of coverage an
     id: "building-in-public-strategy",
     title: "Building In Public Strategy",
     description: "Every line of code, every decision, every setback shared openly - true transparency from start to finish.",
-    icon: MessageSquare,
+    icon: Code,
     content: `
 My understanding of the "Build in Public" philosophy goes far beyond simply sharing final results. I believe truly valuable sharing should include the entire thought process, decision logic, difficulties encountered, and problem-solving approaches. This deep transparency not only helps other technical professionals learn, but more importantly, builds genuine trust relationships. Through this approach, I hope everyone following this challenge can gain inspiration, whether they're technical experts or industry practitioners.
 
@@ -118,15 +118,16 @@ This comprehensive open development approach not only makes the entire process m
     id: "whats-next",
     title: "What's Next",
     description: "Ready to join, refer someone, or just follow along? Here's exactly how to get involved in this journey.",
-    icon: MessageSquare,
+    icon: ArrowRight,
     content: `
-Having read this far, I imagine you might be interested in this challenge or have questions. Whether you want to **join me as a guest**, **follow the development story**, or **explore what we've built**, I've prepared comprehensive resources to help you get involved.
+Ready to get involved? Here are your next steps:
 
-For detailed information about participation, timelines, and answers to common questions, please visit our comprehensive FAQ section:
+- [FAQ](https://sanhehu.atlassian.net/wiki/spaces/SHPB/pages/530251781/30+Voices+30+AI+Products+Challenge+-+FAQ): Get answers to common questions about participation, timeline, and requirements
+- [View Topic List](https://docs.google.com/spreadsheets/d/1vIl5MCGvksAMShWFTbFCZIHjOuZAOsauXQNFuAxSeuE/edit?usp=sharing): Browse our spreadsheet of 30 professional domains we're targeting
+- [Apply to Participate](https://forms.gle/iPWreajqos52gXpo8): Fill out the application form to become a guest interview participant
+- [AI Solution Gallery](https://sanhehu.atlassian.net/wiki/spaces/SHPB/pages/530120707/30+Voices+30+AI+Products+Challenge+-+AI+Solutions+Gallery): Explore the custom AI tools we've already built for previous participants
 
-**→** [**30 Voices, 30 AI Products Challenge - FAQ**](https://sanhehu.atlassian.net/wiki/spaces/SHPB/pages/530251781/30+Voices+30+AI+Products+Challenge+-+FAQ)
-
-This is just the beginning of an exciting journey. Through these 30 in-depth conversations, we'll not only create valuable AI tools but also open new possibilities for AI technology applications across industries. Looking forward to collaborating with you!
+This is your chance to be part of something bigger - join the community of professionals helping shape AI's practical applications across industries.
     `
   }
 ]

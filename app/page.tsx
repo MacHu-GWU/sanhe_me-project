@@ -157,7 +157,7 @@ export default function HomePage() {
               */}
               <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full border-2 border-primary shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 overflow-hidden">
                 <Image
-                  src="/2025-07-30-Sanhe-Profile-Photo-1920x1920.webp"
+                  src="https://sh-img-cdn.sanhe.me/projects/sanhe-me/2025-07-30-Sanhe-Profile-Photo-1920x1920-v01.webp"
                   alt="Sanhe Hu Profile Photo"
                   // Next.js Image optimization dimensions in PIXELS (not Tailwind units):
                   // - width={160} = tells Next.js the intended display width is 160 pixels

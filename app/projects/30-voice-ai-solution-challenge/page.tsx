@@ -96,7 +96,7 @@ export default function VoiceAIChallengePage() {
         <div className="max-w-4xl mx-auto">
           <div className="relative rounded-2xl overflow-hidden border border-primary/20 shadow-lg shadow-primary/10 bg-gradient-to-br from-regular-button/60 to-regular-button/40 backdrop-blur-sm">
             <Image
-              src="/The-30-Voice-30-AI-Solutions-for-Professionals-Challenge-Cover-Image.webp"
+              src="https://sh-img-cdn.sanhe.me/projects/sanhe-me/projects/The-30-Voice-30-AI-Solutions-for-Professionals-Challenge-Cover-Image-v01.webp"
               alt="The 30 Voice, 30 AI Solutions for Professionals Challenge - Visual Overview"
               width={1200}
               height={600}

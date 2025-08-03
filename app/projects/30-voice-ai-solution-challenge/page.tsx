@@ -1,305 +1,92 @@
-"use client"
+import { Metadata } from "next"
+import VoiceAIChallengeContent from "./VoiceAIChallengeContent"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeft, X } from "lucide-react"
-import { projectData, ProjectSection } from "./data"
-import MarkdownRenderer from "@/components/ui/markdown-renderer"
+// =====================================
+// SEO 配置区域 - 方便修改 SEO 信息
+// =====================================
+const SEO_CONFIG = {
+  // 页面标题 - 显示在浏览器标签和搜索结果中
+  title: "The 30 Voice, 30 AI Solutions for Professionals Challenge - Sanhe Hu | Innovation in AI Solutions",
+  // 页面描述 - 显示在搜索结果摘要中，影响点击率
+  description: "The 30 Voice, 30 AI Solutions for Professionals Challenge - A build-in-public journey interviewing 30 professional leaders and co-creating 30 AI solutions together. Follow this innovative project by Sanhe Hu.",
+  // 关键词数组 - 帮助搜索引擎理解页面内容
+  keywords: ["30 Voice AI Challenge", "AI Solutions", "Build in Public", "Voice AI", "Professional Leaders", "Innovation", "Sanhe Hu", "AI Products", "Technology Challenge", "Collaborative AI"],
+  // 作者信息 - 标识内容创作者
+  author: { name: "Sanhe Hu", url: "https://sanhe.me" },
+  // 内容创建者 - 用于搜索引擎识别
+  creator: "Sanhe Hu",
+  // 网站完整 URL - 用于社交分享和规范链接
+  url: "https://sanhe.me/projects/30-voice-ai-solution-challenge",
+  // 网站名称 - 在社交分享中显示
+  siteName: "Sanhe Hu Portfolio",
+  // OpenGraph 标题 - 社交平台分享时显示的标题
+  ogTitle: "30 Voice AI Challenge - Building AI Solutions with Industry Leaders",
+  // OpenGraph 描述 - 社交平台分享时显示的描述
+  ogDescription: "Join the journey of interviewing 30 professional leaders and co-creating 30 AI solutions. A unique build-in-public challenge showcasing innovation in AI technology and collaborative problem-solving.",
+  // 社交分享图片 - 分享到社交平台时显示的图片
+  image: "https://sh-img-cdn.sanhe.me/projects/sanhe-me/projects/The-30-Voice-30-AI-Solutions-for-Professionals-Challenge-Cover-Image-v01.webp",
+  // 图片尺寸 - 帮助社交平台正确显示图片
+  imageWidth: 1200,
+  imageHeight: 600,
+  // 图片 alt 文本 - 图片的描述文字，提升无障碍体验
+  imageAlt: "30 Voice AI Challenge - Visual Overview of the Build-in-Public AI Solutions Project",
+  // Twitter 卡片标题 - Twitter 分享时的专用标题
+  twitterTitle: "30 Voice AI Challenge - Building AI with Industry Leaders",
+  // Twitter 卡片描述 - Twitter 分享时的专用描述
+  twitterDescription: "Follow the build-in-public journey: 30 interviews with professional leaders, 30 AI solutions created together. Innovation in action!",
+  // 页面语言和地区 - 帮助搜索引擎理解内容语言
+  locale: "en_US"
+}
 
+// =====================================
+// 生成 SEO 元数据
+// =====================================
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: SEO_CONFIG.title,
+    description: SEO_CONFIG.description,
+    keywords: SEO_CONFIG.keywords,
+    authors: [SEO_CONFIG.author],
+    creator: SEO_CONFIG.creator,
+    openGraph: {
+      title: SEO_CONFIG.ogTitle,
+      description: SEO_CONFIG.ogDescription,
+      url: SEO_CONFIG.url,
+      siteName: SEO_CONFIG.siteName,
+      images: [
+        {
+          url: SEO_CONFIG.image,
+          width: SEO_CONFIG.imageWidth,
+          height: SEO_CONFIG.imageHeight,
+          alt: SEO_CONFIG.imageAlt,
+        }
+      ],
+      locale: SEO_CONFIG.locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SEO_CONFIG.twitterTitle,
+      description: SEO_CONFIG.twitterDescription,
+      images: [SEO_CONFIG.image],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  }
+}
 
+// =====================================
+// Voice AI Challenge 页面服务器组件
+// =====================================
 export default function VoiceAIChallengePage() {
-  const [selectedCard, setSelectedCard] = useState<string | null>(null)
-
-  const openModal = (id: string) => {
-    setSelectedCard(id)
-  }
-
-  const closeModal = () => {
-    setSelectedCard(null)
-  }
-
-  const selectedSection = projectData.find(section => section.id === selectedCard)
-
-  // Handle escape key for modal
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedCard) {
-        closeModal()
-      }
-    }
-    
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [selectedCard])
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (selectedCard) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [selectedCard])
-
-  return (
-    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[600px] h-[400px] bg-gradient-radial from-primary/8 via-primary/4 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-gradient-radial from-secondary/6 via-secondary/3 to-transparent rounded-full blur-2xl"></div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-16">
-            <div className="flex space-x-8">
-              <Link href="/" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                Home
-              </Link>
-              <Link href="/projects" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                Projects
-              </Link>
-              <span className="text-primary font-medium">Voice AI Challenge</span>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Header Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors duration-200 mb-6"
-          >
-            <ArrowLeft size={20} />
-            Back to Projects
-          </Link>
-          
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-text-primary via-primary to-highlight bg-clip-text text-transparent">
-            The 30 Voice, 30 AI Solutions for Professionals Challenge
-          </h1>
-          <p className="text-xl text-text-secondary mb-8">
-            A build-in-public challenge: interviewing <span className="text-secondary">30 professional leaders</span> and co-creating <span className="text-secondary">30 AI solutions</span> together.
-          </p>
-        </div>
-      </section>
-
-      {/* Project Cover Image */}
-      <section className="pb-8 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative rounded-2xl overflow-hidden border border-primary/20 shadow-lg shadow-primary/10 bg-gradient-to-br from-regular-button/60 to-regular-button/40 backdrop-blur-sm">
-            <Image
-              src="https://sh-img-cdn.sanhe.me/projects/sanhe-me/projects/The-30-Voice-30-AI-Solutions-for-Professionals-Challenge-Cover-Image-v01.webp"
-              alt="The 30 Voice, 30 AI Solutions for Professionals Challenge - Visual Overview"
-              width={1200}
-              height={600}
-              className="w-full h-auto object-cover"
-              priority
-            />
-            {/* Optional overlay gradient for better text contrast if needed */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Cards Timeline */}
-      <section className="pb-16 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto relative">
-          {/* Curved Path SVG */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 pointer-events-none hidden lg:block">
-            <svg 
-              className="w-full h-full" 
-              viewBox="0 0 2 100" 
-              preserveAspectRatio="none"
-              fill="none"
-            >
-              <path
-                d="M1 0 Q1.5 25 0.5 50 Q-0.5 75 1 100"
-                stroke="url(#gradient)"
-                strokeWidth="0.1"
-                fill="none"
-                className="opacity-30"
-              />
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="var(--primary)" />
-                  <stop offset="50%" stopColor="var(--secondary)" />
-                  <stop offset="100%" stopColor="var(--highlight)" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
-          {/* Cards */}
-          <div className="space-y-8">
-            {projectData.map((section, index) => {
-              const isEven = index % 2 === 0
-              const IconComponent = section.icon
-
-              return (
-                <div
-                  key={section.id}
-                  className={`relative ${isEven ? 'lg:pr-8' : 'lg:pl-8'}`}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10 hidden lg:block">
-                    <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-20"></div>
-                  </div>
-
-                  {/* Card */}
-                  <div
-                    className={`bg-regular-button/80 backdrop-blur-sm border border-primary/30 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] ${isEven ? 'lg:mr-12' : 'lg:ml-12'}`}
-                  >
-                    {/* Card Header */}
-                    <div className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0">
-                          <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
-                            <IconComponent size={24} className="text-primary" />
-                          </div>
-                        </div>
-                        
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xl font-semibold text-primary mb-2">
-                            {section.title}
-                          </h3>
-                          <p className="text-text-secondary leading-relaxed mb-4">
-                            {section.description}
-                          </p>
-                          
-                          <button
-                            onClick={() => openModal(section.id)}
-                            className="bg-primary/20 hover:bg-primary/30 text-primary px-4 py-2 rounded-lg transition-colors duration-200 flex items-center gap-2"
-                          >
-                            More Details
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-regular-button/10 to-background"></div>
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-text-primary via-primary to-highlight bg-clip-text text-transparent">
-            What's Next?
-          </h2>
-          <p className="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
-            Ready to get involved? Choose your path and join this exciting journey.
-          </p>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {/* FAQ Button - Highlighted */}
-            <a
-              href="https://sanhehu.atlassian.net/wiki/spaces/SHPB/pages/530251781/30+Voices+30+AI+Products+Challenge+-+FAQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-highlight text-background font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/40 text-center group"
-            >
-              <div className="text-lg font-bold mb-1">FAQ</div>
-              <div className="text-sm opacity-90">Get Answers</div>
-            </a>
-            
-            {/* Topic List Button */}
-            <a
-              href="https://docs.google.com/spreadsheets/d/1vIl5MCGvksAMShWFTbFCZIHjOuZAOsauXQNFuAxSeuE/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-background font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 text-center group"
-            >
-              <div className="text-base font-bold mb-1">Topic List</div>
-              <div className="text-sm opacity-80">Browse Domains</div>
-            </a>
-            
-            {/* Apply Button */}
-            <a
-              href="https://forms.gle/iPWreajqos52gXpo8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-transparent border-2 border-secondary text-secondary hover:bg-secondary hover:text-background font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-secondary/30 text-center group"
-            >
-              <div className="text-base font-bold mb-1">Apply</div>
-              <div className="text-sm opacity-80">Join as Guest</div>
-            </a>
-            
-            {/* AI Gallery Button */}
-            <a
-              href="https://sanhehu.atlassian.net/wiki/spaces/SHPB/pages/530120707/30+Voices+30+AI+Products+Challenge+-+AI+Solutions+Gallery"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-transparent border-2 border-secondary text-secondary hover:bg-secondary hover:text-background font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-secondary/30 text-center group"
-            >
-              <div className="text-base font-bold mb-1">AI Gallery</div>
-              <div className="text-sm opacity-80">Get Inspired</div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Modal Overlay */}
-      {selectedCard && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={closeModal}
-          />
-          
-          {/* Modal Content */}
-          <div className="relative bg-regular-button/95 backdrop-blur-md border border-primary/30 rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden shadow-2xl shadow-primary/20">
-            {/* Modal Header */}
-            <div className="flex items-start justify-between p-6 border-b border-primary/20">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
-                    {selectedSection && <selectedSection.icon size={24} className="text-primary" />}
-                  </div>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-primary mb-2">
-                    {selectedSection?.title}
-                  </h2>
-                  <p className="text-text-secondary">
-                    {selectedSection?.description}
-                  </p>
-                </div>
-              </div>
-              
-              <button
-                onClick={closeModal}
-                className="text-text-secondary hover:text-primary transition-colors duration-200 p-2 hover:bg-primary/10 rounded-lg"
-              >
-                <X size={24} />
-              </button>
-            </div>
-            
-            {/* Modal Body */}
-            <div className="overflow-y-auto max-h-[60vh] p-6">
-              {selectedSection && (
-                <MarkdownRenderer content={selectedSection.content} />
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Footer Spacing */}
-      <div className="h-16"></div>
-    </div>
-  )
+  return <VoiceAIChallengeContent />
 }

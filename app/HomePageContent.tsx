@@ -135,81 +135,124 @@ export default function HomePageContent() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto">
           <div
-            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} flex flex-col lg:flex-row gap-8 lg:gap-12 items-start`}
           >
-            {/* Profile Image */}
-            <div className="mb-8">
-              {/* 
-                Container div that defines the actual rendered size:
-                - w-32 h-32 = 128px × 128px on mobile (Tailwind: 1 unit = 4px, so 32 × 4 = 128px)
-                - sm:w-40 sm:h-40 = 160px × 160px on desktop (40 × 4 = 160px) 
-                - mx-auto = margin-left: auto; margin-right: auto; (centers horizontally)
-                - rounded-full = border-radius: 50%; (makes it circular)
-                - border-2 = 2px solid border
-                - border-primary = uses CSS custom property --primary color
-                - shadow-lg = large drop shadow
-                - shadow-primary/30 = shadow color is primary at 30% opacity
-                - hover:shadow-primary/50 = on hover, shadow becomes 50% opacity
-                - transition-all duration-300 = smooth 300ms animation for all property changes
-                - overflow-hidden = clips content that exceeds the circular boundary
-              */}
-              <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full border-2 border-primary shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 overflow-hidden">
-                <Image
-                  src="https://sh-img-cdn.sanhe.me/projects/sanhe-me/2025-07-30-Sanhe-Profile-Photo-1920x1920-v01.webp"
-                  alt="Sanhe Hu Profile Photo"
-                  // Next.js Image optimization dimensions in PIXELS (not Tailwind units):
-                  // - width={160} = tells Next.js the intended display width is 160 pixels
-                  // - height={160} = tells Next.js the intended display height is 160 pixels
-                  // These values are used by Next.js for:
-                  // 1. Automatic image optimization and resizing
-                  // 2. Generating responsive srcSet for different screen densities
-                  // 3. Preventing Cumulative Layout Shift (CLS) by reserving space
-                  // 4. Should match the largest container size (desktop: 160px)
-                  width={160}
-                  height={160}
-                  // Tailwind classes for responsive behavior:
-                  // - w-full = width: 100%; (fills container width: 128px mobile, 160px desktop)
-                  // - h-full = height: 100%; (fills container height: 128px mobile, 160px desktop)  
-                  // - object-cover = object-fit: cover; (maintains aspect ratio, crops if needed)
-                  className="w-full h-full object-cover"
-                />
+            {/* Left Column - Profile */}
+            <div className="w-full lg:w-1/3 flex-shrink-0">
+              {/* Profile Image */}
+              <div className="mb-6">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-2 border-primary shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 overflow-hidden">
+                  <Image
+                    src="https://sh-img-cdn.sanhe.me/projects/sanhe-me/2025-07-30-Sanhe-Profile-Photo-1920x1920-v01.webp"
+                    alt="Sanhe Hu Profile Photo"
+                    width={192}
+                    height={192}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Name and Title */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-text-primary via-primary to-highlight bg-clip-text text-transparent drop-shadow-2xl">
+                Sanhe Hu
+              </h1>
+              <p className="text-lg sm:text-xl text-text-secondary mb-6 font-medium">
+                <span className="text-secondary">Builder</span>,{" "}
+                <span className="text-highlight">Full-Stack AI Architect</span>,{" "}
+                <span className="text-primary">Open Source Contributor</span>
+              </p>
+
+              {/* Social Icons */}
+              <div className="flex space-x-6">
+                <a
+                  href="https://github.com/MacHu-GWU"
+                  className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
+                  aria-label="GitHub"
+                >
+                  <FaGithub size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/sanhehu/"
+                  className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
+                </a>
+                <a
+                  href="https://sanhehu.atlassian.net/wiki/spaces/SHPB/overview"
+                  className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
+                  aria-label="Blog"
+                >
+                  <BookOpen size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
+                </a>
               </div>
             </div>
 
-            {/* Name and Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-text-primary via-primary to-highlight bg-clip-text text-transparent drop-shadow-2xl">
-              Sanhe Hu
-            </h1>
-            <p className="text-xl sm:text-2xl text-text-secondary mb-8 font-medium">
-              <span className="text-secondary">Solution Architect</span>,{" "}
-              <span className="text-highlight">Builder</span>
-            </p>
+            {/* Right Column - About Content */}
+            <div className="w-full lg:w-2/3 lg:pl-8">
+              <div className="prose prose-invert max-w-none">
+                {/* Intro */}
+                <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+                  I'm a full-stack AI architect who eliminates the bottleneck by doing it all:
+                </p>
 
-            {/* Social Icons */}
-            <div className="flex justify-center space-x-6">
-              <a
-                href="https://github.com/MacHu-GWU"
-                className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
-                aria-label="GitHub"
-              >
-                <FaGithub size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/sanhehu/"
-                className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
-              </a>
-              <a
-                href="https://sanhehu.atlassian.net/wiki/spaces/SHPB/overview"
-                className="w-8 h-8 text-text-secondary hover:text-primary transition-all duration-300 hover:scale-110 hover:drop-shadow-lg hover:shadow-primary/50"
-                aria-label="Blog"
-              >
-                <BookOpen size={32} className="hover:fill-current filter hover:drop-shadow-lg" />
-              </a>
+                {/* Code Block */}
+                <div className="bg-regular-button/60 backdrop-blur-sm border border-primary/30 rounded-lg p-6 mb-6 font-mono text-sm overflow-x-auto">
+                  <pre className="text-text-primary">
+{`class SanheHu:
+    roles = [
+        "AI Solution Architect",  # Design systems and product
+        "Designer",               # UX, Visual Design
+        "Full Stack Developer",   # Backend and Frontend production code
+        "DevOps Specialist",      # Build infrastructure
+        "Data Engineer",          # Create pipelines
+        "ML Engineer",            # AI / ML integration
+        "Open Source Maintainer", # Share knowledge
+    ]
+
+    def deliver_project(self):
+        # No meetings, no handoffs, no delays
+        return "Production-ready AI in weeks, not months"`}
+                  </pre>
+                </div>
+
+                {/* Real Impact */}
+                <h3 className="text-2xl font-bold text-primary mb-4">Real Impact:</h3>
+                <ul className="space-y-2 mb-6 text-text-secondary">
+                  <li className="flex items-start">
+                    <span className="text-xl mr-2">🏗️</span>
+                    <span><strong className="text-text-primary">Multi-Agent Architecture:</strong> Built Multi-Agent platform serving 500M+ monthly requests</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-xl mr-2">📚</span>
+                    <span><strong className="text-text-primary">Enterprise RAG:</strong> Deployed 100+ RAG systems processing 20K daily queries</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-xl mr-2">🔍</span>
+                    <span><strong className="text-text-primary">AI Observability:</strong> Architected platform capturing 500K monthly AI inference call</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-xl mr-2">🌐</span>
+                    <span><strong className="text-text-primary">Open Source:</strong> 150+ projects with 10M+ monthly downloads</span>
+                  </li>
+                </ul>
+
+                {/* What Sets Me Apart */}
+                <h3 className="text-2xl font-bold text-secondary mb-4">What Sets Me Apart:</h3>
+                <ul className="space-y-2 mb-6 text-text-secondary">
+                  <li><strong className="text-text-primary">Hands-On Architect:</strong> I write the code I design</li>
+                  <li><strong className="text-text-primary">Speed to Market:</strong> Ship production systems in 3 weeks (vs typical 3 months)</li>
+                  <li><strong className="text-text-primary">Innovation Leader:</strong> Early MCP adopter - built it 6 months before official release</li>
+                  <li><strong className="text-text-primary">AWS Expert:</strong> Former AWS Senior Architect</li>
+                </ul>
+
+                {/* CTA */}
+                <p className="text-lg text-highlight font-medium mt-8">
+                  💬 Want to know more? Ask my AI assistant below!
+                </p>
+              </div>
             </div>
           </div>
         </div>

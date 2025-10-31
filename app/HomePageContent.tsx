@@ -161,7 +161,7 @@ export default function HomePageContent() {
               <p className="text-lg sm:text-xl text-text-secondary mb-6 font-medium text-center">
                 <span className="text-secondary">Builder</span>,{" "}
                 <span className="text-highlight">Solution Architect</span>,{" "}
-                <span className="text-primary">Open Source Leader</span>
+                <span className="text-primary">Open Source</span>
               </p>
 
               {/* Social Icons */}

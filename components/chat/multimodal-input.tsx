@@ -1,0 +1,206 @@
+"use client";
+
+import type { ChatRequestOptions, UIMessage } from "ai";
+import { motion } from "framer-motion";
+import type React from "react";
+import {
+  useRef,
+  useEffect,
+  useCallback,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
+import { toast } from "sonner";
+import { useLocalStorage, useWindowSize } from "usehooks-ts";
+
+import { cn, sanitizeUIMessages } from "@/lib/utils";
+
+import { ArrowUpIcon, StopIcon } from "./icons";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import suggestedActionsData from "@/data/suggested-actions.json";
+
+// Load suggested actions from shared JSON data file
+const suggestedActions = suggestedActionsData;
+
+export function MultimodalInput({
+  chatId,
+  input,
+  setInput,
+  isLoading,
+  stop,
+  messages,
+  setMessages,
+  append,
+  handleSubmit,
+  className,
+}: {
+  chatId: string;
+  input: string;
+  setInput: (value: string) => void;
+  isLoading: boolean;
+  stop: () => void;
+  messages: Array<UIMessage>;
+  setMessages: Dispatch<SetStateAction<Array<UIMessage>>>;
+  append: (
+    message: any,
+    chatRequestOptions?: ChatRequestOptions,
+  ) => Promise<string | null | undefined>;
+  handleSubmit: (
+    event?: {
+      preventDefault?: () => void;
+    },
+    chatRequestOptions?: ChatRequestOptions,
+  ) => void;
+  className?: string;
+}) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { width } = useWindowSize();
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      adjustHeight();
+    }
+  }, []);
+
+  const adjustHeight = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight + 2}px`;
+    }
+  };
+
+  const [localStorageInput, setLocalStorageInput] = useLocalStorage(
+    "input",
+    "",
+  );
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      const domValue = textareaRef.current.value;
+      // Prefer DOM value over localStorage to handle hydration
+      const finalValue = domValue || localStorageInput || "";
+      setInput(finalValue);
+      adjustHeight();
+    }
+    // Only run once after hydration
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setLocalStorageInput(input);
+  }, [input, setLocalStorageInput]);
+
+  const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(event.target.value);
+    adjustHeight();
+  };
+
+  const submitForm = useCallback(() => {
+    handleSubmit(undefined, {});
+    setLocalStorageInput("");
+
+    if (width && width > 768) {
+      textareaRef.current?.focus();
+    }
+  }, [handleSubmit, setLocalStorageInput, width]);
+
+  return (
+    <div className="relative w-full flex flex-col gap-4">
+      {/* Suggested Questions */}
+      {messages.length === 0 && (
+        <div className="flex flex-col gap-3">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-t-2 border-b-2 border-blue-200 py-2.5 px-4 rounded-lg shadow-sm">
+            <div className="text-center space-y-1">
+              <p className="text-sm text-gray-700 font-medium leading-snug">
+                💡 <span className="font-semibold text-gray-900">提示</span>：你可以直接输入问题，或点击下方建议的问题开始对话
+              </p>
+              <p className="text-xs text-gray-500 leading-snug">
+                👇 选择一个问题快速开始
+              </p>
+            </div>
+          </div>
+
+          <div className="max-h-[180px] sm:max-h-[140px] overflow-y-auto">
+            <div className="grid sm:grid-cols-2 gap-2 w-full pr-1">
+              {suggestedActions.map((suggestedAction, index) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: 0.05 * index }}
+                  key={`suggested-action-${suggestedAction.title}-${index}`}
+                >
+                  <Button
+                    variant="ghost"
+                    onClick={async () => {
+                      append({
+                        role: "user",
+                        content: suggestedAction.action,
+                      });
+                    }}
+                    className="text-left border border-gray-200 hover:border-blue-600 hover:bg-blue-50 bg-white rounded-xl px-3 py-2.5 text-sm flex-1 gap-0.5 sm:flex-col w-full h-auto justify-start items-start transition-all"
+                  >
+                    <span className="font-semibold text-gray-900 text-sm leading-snug">{suggestedAction.title}</span>
+                    <span className="text-xs text-gray-500 leading-snug">
+                      {suggestedAction.label}
+                    </span>
+                  </Button>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* User Message Input Form */}
+      <Textarea
+        ref={textareaRef}
+        placeholder="输入你的问题..."
+        value={input}
+        onChange={handleInput}
+        className={cn(
+          "min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-xl !text-base bg-white border-gray-300 focus:border-blue-600 focus:ring-blue-600 text-gray-900 placeholder:text-gray-500",
+          className,
+        )}
+        rows={3}
+        autoFocus
+        onKeyDown={(event) => {
+          if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+
+            if (isLoading) {
+              toast.error("请等待模型完成响应！");
+            } else {
+              submitForm();
+            }
+          }
+        }}
+      />
+
+      {isLoading ? (
+        <Button
+          className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 border border-gray-300 bg-white hover:bg-gray-50"
+          onClick={(event) => {
+            event.preventDefault();
+            stop();
+            setMessages((messages) => sanitizeUIMessages(messages));
+          }}
+        >
+          <StopIcon size={14} className="text-gray-700" />
+        </Button>
+      ) : (
+        <Button
+          className="rounded-full p-1.5 h-fit absolute bottom-2 right-2 m-0.5 border border-blue-600 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={(event) => {
+            event.preventDefault();
+            submitForm();
+          }}
+          disabled={input.length === 0}
+        >
+          <ArrowUpIcon size={14} className="text-white" />
+        </Button>
+      )}
+    </div>
+  );
+}

@@ -32,11 +32,15 @@ export const Overview = () => {
             {/* Welcome Text */}
             <div className="space-y-3">
               <h2 className="text-2xl md:text-3xl font-bold text-text-primary">
-                你好！我是 <span className="text-primary glow-primary">{METADATA.AI_ASSISTANT_NAME}</span> 👋
+                Hi! I'm Sanhe's <span className="text-primary glow-primary">{METADATA.AI_ASSISTANT_NAME}</span> 👋
               </h2>
               <p className="text-base text-text-secondary max-w-2xl mx-auto">
-                我可以回答关于 <span className="font-semibold text-primary">Sanhe Hu</span> 的背景、工作经验、技术栈、项目作品等任何问题。
-                让我帮助你更好地了解他！
+                Ask me anything about <span className="font-semibold text-primary">Sanhe Hu</span> professional background
+                , <span className="font-semibold text-primary">AI expertise</span>
+                , <span className="font-semibold text-primary">AWS experience</span>
+                , <span className="font-semibold text-primary">client solutions</span>
+                , and <span className="font-semibold text-primary">open-source contributions</span>
+                . I'm here to help you understand his unique value proposition!
               </p>
             </div>
           </div>

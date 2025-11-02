@@ -1,27 +1,32 @@
 [
   {
-    "title": "👨‍💻 关于我",
-    "label": "了解 Sanhe 的背景和经历",
-    "action": "能介绍一下你自己吗？你的背景和工作经历是什么？"
+    "title": "👤 About Me",
+    "label": "Understanding Sanhe's background",
+    "action": "Tell me about Sanhe's professional background and what makes him unique as a 'one-person team'"
   },
   {
-    "title": "💼 工作经验",
-    "label": "详细的工作经历和项目",
-    "action": "能详细介绍一下你的工作经验吗？你在 Amazon 和其他公司都做了什么项目？"
+    "title": "💼 Work Experience",
+    "label": "Career history and key roles",
+    "action": "Walk me through Sanhe's work experience - what did he accomplish at AWS and with his consulting clients?"
   },
   {
-    "title": "🛠️ 技术栈",
-    "label": "擅长的技术和工具",
-    "action": "你擅长哪些技术栈？精通哪些编程语言和框架？"
+    "title": "🤖 AI Expertise",
+    "label": "Enterprise AI solutions",
+    "action": "What AI solutions has Sanhe built? Tell me about his Multi-Agent architecture work and innovations in the AI field"
   },
   {
-    "title": "📚 项目作品",
-    "label": "个人项目和开源贡献",
-    "action": "你有哪些个人项目或开源贡献？能介绍几个代表性的项目吗？"
+    "title": "🔧 Technical Skills",
+    "label": "Technologies and certifications",
+    "action": "What technologies does Sanhe specialize in? Tell me about his AWS expertise and technical depth"
   },
   {
-    "title": "📧 联系方式",
-    "label": "如何联系和合作",
-    "action": "如果我想联系你或讨论合作机会，应该通过什么方式联系你？"
+    "title": "📦 Open Source",
+    "label": "Community contributions",
+    "action": "What open-source projects has Sanhe created? How has he contributed to the developer community?"
+  },
+  {
+    "title": "🎯 Client Solutions",
+    "label": "Real-world impact and results",
+    "action": "What tangible results has Sanhe delivered for enterprise clients? Can you share specific success stories?"
   }
 ]

@@ -36,9 +36,17 @@ confluence_pipeline = ConfluencePipeline(
     include=[
         "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/629440574/2023-09+to+2024-06+-+Enterprise+AI+Observability+Platform",
         "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/629538817/2024-06+to+2025-01+-+Enterprise+Knowledge+Integration+System1",
+        "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/630685698/2024-11+to+2025-10+-+Enterprise+MCP+Infrastructure",
+        "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/630587394/2023-09+to+2025-10+-+Multi-Agent+Solution+Evolution",
+        "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/630718465/2024-08+to+2024-12+-+AI+Transformation+Consulting+Framework",
+        "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/629637125/Sanhe+s+Skill+Point",
     ],
     exclude=[],
     dir_out=dir_tmp_docs,
+    wanted_fields=[
+        "title",
+        "markdown_content",
+    ],
 )
 confluence_pipeline.fetch()
 

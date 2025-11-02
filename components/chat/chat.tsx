@@ -59,7 +59,7 @@ export function Chat() {
     useScrollToBottom<HTMLDivElement>();
 
   return (
-    <div className="flex flex-col min-w-0 h-[calc(100dvh-52px)]">
+    <div className="flex flex-col min-w-0 h-[calc(100dvh-52px)] bg-background">
       <div
         ref={messagesContainerRef}
         className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll pt-4"
@@ -70,26 +70,26 @@ export function Chat() {
         {/* Context Banner */}
         {messages.length > 0 && isContextBannerVisible && (
           <div className="max-w-3xl mx-auto px-4 w-full">
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4 shadow-sm">
+            <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0a0a0a] border border-primary/30 rounded-xl p-4 shadow-lg shadow-primary/10">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-start gap-3 flex-1">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center shadow-md shrink-0 mt-0.5">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-highlight rounded-lg flex items-center justify-center shadow-lg shadow-primary/50 shrink-0 mt-0.5">
                     <span className="text-lg font-bold text-white">AI</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-sm font-bold text-gray-900">AI Assistant</h3>
-                      <span className="text-xs text-gray-600">•</span>
-                      <span className="text-xs text-gray-600">Sanhe.me</span>
+                      <h3 className="text-sm font-bold text-white">AI Assistant</h3>
+                      <span className="text-xs text-text-secondary">•</span>
+                      <span className="text-xs text-text-secondary">Sanhe.me</span>
                     </div>
-                    <p className="text-xs text-gray-700 leading-relaxed">
-                      我会帮你了解 <span className="font-semibold text-blue-600">Sanhe Hu</span> 的背景、经验和技能。
+                    <p className="text-xs text-text-secondary leading-relaxed">
+                      我会帮你了解 <span className="font-semibold text-primary glow-primary">Sanhe Hu</span> 的背景、经验和技能。
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsContextBannerVisible(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+                  className="text-text-secondary hover:text-primary transition-colors shrink-0"
                   aria-label="关闭"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

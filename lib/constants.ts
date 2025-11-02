@@ -6,6 +6,7 @@ export const METADATA = {
 
 export const CDN_ASSETS = {
   HERO_IMAGE_LOW_MARGIN: "https://sh-img-cdn.sanhe.me/profile/2025-07-30-Sanhe-Profile-Photo-Banner-1534x464-v01.webp",
+  PROFILE_PHOTO: "https://sh-img-cdn.sanhe.me/projects/sanhe-me/2025-07-30-Sanhe-Profile-Photo-1920x1920-v01.webp",
 } as const;
 
 export const ROUTES = {

@@ -28,13 +28,13 @@ export const PreviewMessage = ({
         className={cn(
           "flex gap-4 w-full rounded-xl",
           message.role === "user"
-            ? "bg-blue-600 text-white px-4 py-3 ml-auto w-fit max-w-2xl shadow-sm"
+            ? "bg-gradient-to-r from-primary to-highlight text-white px-4 py-3 ml-auto w-fit max-w-2xl shadow-lg shadow-primary/50"
             : ""
         )}
       >
         {/* AI Assistant Avatar - Left side */}
         {message.role === "assistant" && (
-          <div className="size-8 flex items-center rounded-full justify-center bg-gradient-to-br from-purple-500 to-blue-500 shadow-sm shrink-0">
+          <div className="size-8 flex items-center rounded-full justify-center bg-gradient-to-br from-primary to-highlight shadow-lg shadow-primary/50 shrink-0">
             <span className="text-white text-sm font-bold">AI</span>
           </div>
         )}
@@ -46,7 +46,7 @@ export const PreviewMessage = ({
               {message.parts.map((part: any, index: number) => {
                 if (part.type === 'text' && part.text) {
                   return (
-                    <div key={index} className={message.role === "assistant" ? "text-gray-800" : ""}>
+                    <div key={index} className={message.role === "assistant" ? "text-text-primary" : ""}>
                       <Markdown
                         variant="chat"
                         onQuestionClick={(question) => {
@@ -72,8 +72,8 @@ export const PreviewMessage = ({
 
         {/* User Avatar - Right side */}
         {message.role === "user" && (
-          <div className="size-8 flex items-center rounded-full justify-center bg-white shadow-sm border border-gray-200 shrink-0">
-            <span className="text-sm font-semibold text-blue-600">你</span>
+          <div className="size-8 flex items-center rounded-full justify-center bg-[#1a1a1a] shadow-lg border border-primary/50 shrink-0">
+            <span className="text-sm font-semibold text-primary">你</span>
           </div>
         )}
       </div>
@@ -92,12 +92,12 @@ export const ThinkingMessage = () => {
       data-role={role}
     >
       <div className="flex gap-4 w-full rounded-xl">
-        <div className="size-8 flex items-center rounded-full justify-center bg-gradient-to-br from-purple-500 to-blue-500 shadow-sm shrink-0">
+        <div className="size-8 flex items-center rounded-full justify-center bg-gradient-to-br from-primary to-highlight shadow-lg shadow-primary/50 shrink-0">
           <span className="text-white text-sm font-bold">AI</span>
         </div>
 
         <div className="flex flex-col gap-2 w-full">
-          <div className="flex flex-col gap-4 text-gray-600">
+          <div className="flex flex-col gap-4 text-text-secondary">
             正在思考...
           </div>
         </div>

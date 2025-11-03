@@ -48,8 +48,10 @@ export const Markdown = ({ children, variant = 'chat', onQuestionClick }: Markdo
               </a>
             );
           },
-          code: ({ inline, className, children }) => {
-            if (inline) {
+          code: ({ className, children, ...props }) => {
+            // Inline code doesn't have a className (language-*), code blocks do
+            const isInline = !className;
+            if (isInline) {
               return (
                 <code className="bg-[#1a1a1a] border border-primary/30 px-1.5 py-0.5 rounded text-sm font-mono text-primary">
                   {children}

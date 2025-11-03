@@ -42,9 +42,9 @@ npm install             # Install Node.js dependencies
 - `requirements.txt`: Python dependencies for Flask
 
 ### API Routing Pattern
-All Flask routes must use `/api/` prefix to match Next.js proxy configuration:
+All API routes must use `/api/` prefix to match Next.js proxy configuration:
 ```python
-@app.route("/api/python")  # Accessible at localhost:3000/api/python
+@app.get("/api/hello")  # Accessible at localhost:3000/api/hello
 ```
 
 ### Port Configuration

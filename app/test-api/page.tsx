@@ -66,8 +66,7 @@ export default function TestApiPage() {
           <div className="mt-6 pt-6 border-t border-gray-200">
             <h2 className="font-semibold text-gray-700 mb-2">API Endpoints:</h2>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>• <code className="bg-gray-100 px-2 py-1 rounded">/api/hello</code> - New FastAPI endpoint</li>
-              <li>• <code className="bg-gray-100 px-2 py-1 rounded">/api/python</code> - Legacy compatible endpoint</li>
+              <li>• <code className="bg-gray-100 px-2 py-1 rounded">/api/hello</code> - FastAPI endpoint</li>
             </ul>
           </div>
         </div>

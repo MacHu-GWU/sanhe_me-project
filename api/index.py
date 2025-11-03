@@ -42,19 +42,6 @@ async def hello_world():
     )
 
 
-@app.get("/api/python")
-async def python_endpoint():
-    """
-    保持与原 Flask 端点兼容的 API
-    """
-    return JSONResponse(
-        content={
-            "message": "Hello, World!",
-            "framework": "FastAPI"
-        }
-    )
-
-
 @app.post("/api/chat")
 async def handle_chat_data(request: Request, protocol: str = Query("data")):
     """

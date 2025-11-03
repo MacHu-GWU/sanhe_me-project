@@ -301,11 +301,23 @@ export default function HomePageContent() {
               </ul>
 
               {/* CTA */}
-              <div className="mt-8 p-4 bg-regular-button/40 border border-highlight/30 rounded-lg">
-                <p className="text-lg text-highlight font-medium">
-                  💬 Want to know more? Ask my AI assistant below!
-                </p>
-              </div>
+              <Link
+                href="/chat"
+                className="mt-8 p-5 bg-gradient-to-r from-highlight/20 via-primary/20 to-secondary/20 border-2 border-highlight rounded-lg block hover:from-highlight/30 hover:via-primary/30 hover:to-secondary/30 hover:border-highlight hover:scale-[1.03] transition-all duration-300 shadow-lg shadow-highlight/30 hover:shadow-xl hover:shadow-highlight/50 cursor-pointer group relative overflow-hidden"
+              >
+                {/* Animated background shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+                <div className="relative z-10 text-center">
+                  <p className="text-2xl text-highlight font-bold group-hover:text-primary transition-colors duration-300 drop-shadow-lg mb-2">
+                    ✨ Chat with Virtual Sanhe
+                    <span className="inline-block group-hover:translate-x-1 transition-transform duration-300 ml-2">→</span>
+                  </p>
+                  <p className="text-base text-text-primary/90 font-medium group-hover:text-text-primary transition-colors duration-300">
+                    Explore my experience, projects, and discover what makes me different
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
         </div>

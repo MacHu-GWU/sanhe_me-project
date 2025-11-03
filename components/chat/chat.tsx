@@ -6,7 +6,8 @@ import { Overview } from "./overview";
 import { useScrollToBottom } from "@/hooks/use-scroll-to-bottom";
 import { useChat } from "@ai-sdk/react";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 export function Chat() {
   const chatId = "001";
@@ -14,6 +15,25 @@ export function Chat() {
   // AI SDK v5: 手动管理 input 状态
   const [input, setInput] = useState("");
   const [isContextBannerVisible, setIsContextBannerVisible] = useState(true);
+
+  // Use useRef to store browser fingerprint so it can be accessed in fetch closure
+  const browserFingerprintRef = useRef<string>("");
+
+  // Generate browser fingerprint on component mount
+  useEffect(() => {
+    const generateFingerprint = async () => {
+      try {
+        const fp = await FingerprintJS.load();
+        const result = await fp.get();
+        browserFingerprintRef.current = result.visitorId;
+        console.log('🔍 Browser Fingerprint Generated:', result.visitorId);
+      } catch (error) {
+        console.error('Failed to generate browser fingerprint:', error);
+      }
+    };
+
+    generateFingerprint();
+  }, []);
 
   const {
     messages,
@@ -23,11 +43,26 @@ export function Chat() {
     stop,
   } = useChat({
     // v5: 默认使用 /api/chat，不需要指定
+    // Use fetch option to customize request headers
+    fetch: async (input, init) => {
+      const fingerprint = browserFingerprintRef.current;
+      console.log('🔍 Sending fingerprint in request:', fingerprint);
+      return fetch(input, {
+        ...init,
+        headers: {
+          ...init?.headers,
+          'X-Client-Fingerprint': fingerprint,
+        },
+      });
+    },
     onError: (error) => {
-      if (error.message.includes("Too many requests")) {
+      if (error.message.includes("Too many requests") || error.message.includes("Rate limit") || error.message.includes("429")) {
         toast.error(
-          "You are sending too many messages. Please try again later.",
+          "You have reached the usage limit, please try again in 60 minutes 😅",
+          { duration: 8000 }
         );
+      } else {
+        toast.error(error.message);
       }
     },
   });
@@ -83,7 +118,7 @@ export function Chat() {
                       <span className="text-xs text-text-secondary">Sanhe.me</span>
                     </div>
                     <p className="text-xs text-text-secondary leading-relaxed">
-                      我会帮你了解 <span className="font-semibold text-primary glow-primary">Sanhe Hu</span> 的背景、经验和技能。
+                      I'm here to help you understand <span className="font-semibold text-primary glow-primary">Sanhe Hu</span>'s unique value as a senior AI architect and his proven track record in delivering enterprise solutions.
                     </p>
                   </div>
                 </div>

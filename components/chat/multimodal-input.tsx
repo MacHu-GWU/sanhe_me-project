@@ -113,10 +113,10 @@ export function MultimodalInput({
           <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0a0a0a] border-t-2 border-b-2 border-primary/30 py-2.5 px-4 rounded-lg shadow-lg shadow-primary/10">
             <div className="text-center space-y-1">
               <p className="text-sm text-text-primary font-medium leading-snug">
-                💡 <span className="font-semibold text-primary glow-primary">提示</span>：你可以直接输入问题，或点击下方建议的问题开始对话
+                💡 <span className="font-semibold text-primary glow-primary">Tip</span>：Ask me directly, or click a suggested question below to start
               </p>
               <p className="text-xs text-text-secondary leading-snug">
-                👇 选择一个问题快速开始
+                👇 Pick a question to get started
               </p>
             </div>
           </div>

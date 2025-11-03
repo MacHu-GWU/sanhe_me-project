@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { SEOConfig } from "./types"
+import { SEOConfig } from "@/types"
 import { DEFAULT_SEO_CONFIG, COMMON_KEYWORDS } from "./config"
 
 export function generateSEOMetadata(config: SEOConfig): Metadata {

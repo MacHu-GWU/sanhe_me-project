@@ -1,16 +1,6 @@
-import { IconType } from "react-icons"
 import { FaGithub, FaPython } from "react-icons/fa"
 import { Download, PenTool, GitCommit, Building2 } from "lucide-react"
-
-export interface AchievementStat {
-  number: string
-  description: string
-  color: string
-  borderColor: string
-  glowColor: string
-  icon: IconType
-  href: string
-}
+import { AchievementStat } from "@/types"
 
 export const achievementStats: AchievementStat[] = [
   {

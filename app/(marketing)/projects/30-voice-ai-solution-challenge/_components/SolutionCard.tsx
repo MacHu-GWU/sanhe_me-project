@@ -1,12 +1,6 @@
 "use client"
 
-import { ProjectSection } from "../data"
-
-interface SolutionCardProps {
-  section: ProjectSection
-  index: number
-  onCardClick: (id: string) => void
-}
+import { SolutionCardProps } from "@/types"
 
 export default function SolutionCard({ section, index, onCardClick }: SolutionCardProps) {
   const isEven = index % 2 === 0

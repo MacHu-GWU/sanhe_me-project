@@ -4,15 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
-
-interface NavItem {
-  label: string
-  href: string
-}
-
-interface NavigationProps {
-  items?: NavItem[]
-}
+import { NavItem, NavigationProps } from "@/types"
 
 const DEFAULT_NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },

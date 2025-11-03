@@ -1,13 +1,5 @@
 import { HelpCircle, Lightbulb, HandHeart, Calendar, Search, Code, ArrowRight } from "lucide-react"
-import { LucideIcon } from "lucide-react"
-
-export interface ProjectSection {
-  id: string
-  title: string
-  description: string
-  icon: LucideIcon
-  content: string
-}
+import { ProjectSection } from "@/types"
 
 export const projectData: ProjectSection[] = [
   {

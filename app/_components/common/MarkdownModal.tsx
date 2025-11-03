@@ -2,17 +2,8 @@
 
 import { useEffect } from "react"
 import { X } from "lucide-react"
-import { IconType } from "react-icons"
 import MarkdownRenderer from "@/components/ui/markdown-renderer"
-
-interface MarkdownModalProps {
-  isOpen: boolean
-  onClose: () => void
-  title: string
-  description?: string
-  content: string
-  icon?: IconType
-}
+import { MarkdownModalProps } from "@/types"
 
 export default function MarkdownModal({
   isOpen,

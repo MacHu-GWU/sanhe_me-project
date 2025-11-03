@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     "Personal portfolio of Sanhe Hu, a Data/AI Architect specializing in open source solutions and enterprise architecture.",
   keywords: ["Solution Architect", "Data Architect", "AI Architect", "Open Source", "Python", "Enterprise"],
   authors: [{ name: "Sanhe Hu" }],
-  viewport: "width=device-width, initial-scale=1",
   generator: 'v0.dev',
   icons: {
     icon: [
@@ -20,6 +19,11 @@ export const metadata: Metadata = {
     shortcut: '/icon.svg',
     apple: '/icon.svg',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({

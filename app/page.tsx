@@ -8,7 +8,7 @@ const SEO_CONFIG = {
   // 页面标题 - 显示在浏览器标签和搜索结果中
   title: "Sanhe Hu - Solution Architect & Builder",
   // 页面描述 - 显示在搜索结果摘要中，影响点击率
-  description: "Solution Architect and Open Source Developer with 160+ Python libraries, 10M+ monthly downloads, and 600+ repositories. Specialized in cloud architecture, AI, and enterprise solutions.",
+  description: "Solution Architect and Open Source Developer with 150+ Python libraries, 10M+ monthly downloads, and 600+ repositories. Specialized in cloud architecture, AI, and enterprise solutions.",
   // 关键词数组 - 帮助搜索引擎理解页面内容
   keywords: ["Sanhe Hu", "Solution Architect", "Open Source Developer", "Python Libraries", "Cloud Architecture", "AWS", "Enterprise Solutions", "Automation", "Software Engineering", "Tech Leadership"],
   // 作者信息 - 标识内容创作者

@@ -17,7 +17,7 @@ export default function HomePageContent() {
 
   const achievementStats = [
     {
-      number: "160+",
+      number: "150+",
       description: "Open Source Python Libraries",
       color: "text-primary",
       borderColor: "border-primary",

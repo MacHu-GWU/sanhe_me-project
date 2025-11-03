@@ -16,11 +16,41 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [isContextBannerVisible, setIsContextBannerVisible] = useState(true);
 
-  // Use useRef to store browser fingerprint so it can be accessed in fetch closure
+  /**
+   * Store browser fingerprint in useRef instead of useState
+   *
+   * Why useRef instead of useState?
+   * - useState causes re-renders when updated, but we don't need re-rendering for the fingerprint
+   * - useRef.current always holds the latest value, even in closures (critical for fetch interceptor)
+   * - The fetch interceptor is defined once in useEffect, so it captures the ref object
+   * - When we later update ref.current, the interceptor reads the latest value
+   *
+   * Previous attempts that FAILED:
+   * 1. useState + useChat headers option → AI SDK v5 doesn't support 'headers' option
+   * 2. useState + useChat fetch option → AI SDK v5 doesn't support custom 'fetch' option
+   * 3. useState with closure → Closure captured initial empty string, never updated
+   */
   const browserFingerprintRef = useRef<string>("");
 
-  // Generate browser fingerprint on component mount
+  /**
+   * Generate browser fingerprint and intercept fetch requests
+   *
+   * This useEffect does TWO critical things:
+   * 1. Generates a unique browser fingerprint using FingerprintJS
+   * 2. Intercepts all fetch requests to inject the fingerprint header
+   */
   useEffect(() => {
+    /**
+     * Generate browser fingerprint using FingerprintJS library
+     *
+     * FingerprintJS analyzes browser characteristics to create a unique ID:
+     * - Canvas fingerprint (browser rendering differences)
+     * - WebGL fingerprint (GPU characteristics)
+     * - Audio fingerprint (audio processing differences)
+     * - Screen resolution, timezone, language, fonts, etc.
+     *
+     * Result: 99.5% unique identifier across different browsers/devices
+     */
     const generateFingerprint = async () => {
       try {
         const fp = await FingerprintJS.load();
@@ -33,8 +63,68 @@ export function Chat() {
     };
 
     generateFingerprint();
+
+    /**
+     * Intercept window.fetch to inject fingerprint header
+     *
+     * WHY THIS APPROACH?
+     * - AI SDK v5's useChat hook does NOT support custom headers or fetch options
+     * - TypeScript errors showed: 'headers' and 'fetch' are not valid UseChatOptions
+     * - Solution: Monkey-patch window.fetch to intercept ALL fetch calls
+     *
+     * HOW IT WORKS:
+     * 1. Save original fetch function
+     * 2. Replace window.fetch with our custom function
+     * 3. Our function checks if the request is to /api/chat
+     * 4. If yes, inject X-Client-Fingerprint header
+     * 5. Call original fetch with modified headers
+     * 6. On component unmount, restore original fetch (cleanup)
+     *
+     * PREVIOUS FAILED ATTEMPTS:
+     * ❌ Attempt 1: useChat({ headers: {...} })
+     *    → Error: 'headers' does not exist in type 'UseChatOptions'
+     *
+     * ❌ Attempt 2: useChat({ fetch: customFetch })
+     *    → Error: 'fetch' does not exist in type 'UseChatOptions'
+     *
+     * ❌ Attempt 3: useState + closure in custom fetch
+     *    → Closure captured empty string, never updated even after fingerprint generated
+     *
+     * ✅ Current solution: useRef + fetch interceptor
+     *    → Works because ref.current is always up-to-date in the interceptor
+     */
+    const originalFetch = window.fetch;
+    window.fetch = async (input, init?) => {
+      // Only intercept requests to our chat API
+      if (typeof input === 'string' && input.includes('/api/chat')) {
+        const fingerprint = browserFingerprintRef.current;
+        // Initialize headers if not present
+        init = init || {};
+        init.headers = {
+          ...init.headers,
+          'X-Client-Fingerprint': fingerprint,
+        };
+      }
+      return originalFetch(input, init);
+    };
+
+    /**
+     * Cleanup function: restore original fetch when component unmounts
+     * This prevents memory leaks and unexpected behavior in other parts of the app
+     */
+    return () => {
+      window.fetch = originalFetch;
+    };
   }, []);
 
+  /**
+   * AI SDK v5's useChat hook
+   *
+   * Note: This looks simple because the complexity is handled by the fetch interceptor above
+   * - No custom headers needed here (handled by window.fetch override)
+   * - No custom fetch option needed (not supported by AI SDK v5 anyway)
+   * - The fingerprint header is automatically injected for every /api/chat request
+   */
   const {
     messages,
     setMessages,
@@ -42,19 +132,17 @@ export function Chat() {
     status,
     stop,
   } = useChat({
-    // v5: 默认使用 /api/chat，不需要指定
-    // Use fetch option to customize request headers
-    fetch: async (input, init) => {
-      const fingerprint = browserFingerprintRef.current;
-      console.log('🔍 Sending fingerprint in request:', fingerprint);
-      return fetch(input, {
-        ...init,
-        headers: {
-          ...init?.headers,
-          'X-Client-Fingerprint': fingerprint,
-        },
-      });
-    },
+    // v5: Defaults to /api/chat endpoint
+    // Custom headers are transparently added via the fetch interceptor in useEffect above
+    /**
+     * Error handler for chat requests
+     *
+     * When backend rate limiting kicks in (based on browser fingerprint):
+     * - Backend returns HTTP 429 (Too Many Requests) status
+     * - Error message contains keywords: "Too many requests", "Rate limit", or "429"
+     * - Show user-friendly message in English (as requested)
+     * - Duration: 8 seconds (long enough to read the 60-minute wait time)
+     */
     onError: (error) => {
       if (error.message.includes("Too many requests") || error.message.includes("Rate limit") || error.message.includes("429")) {
         toast.error(

@@ -3,11 +3,16 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import dynamic from "next/dynamic"
 import { ArrowLeft } from "lucide-react"
 import { projectData } from "./data"
-import MarkdownModal from "@/app/_components/common/MarkdownModal"
 import SolutionCard from "./_components/SolutionCard"
 import ProjectCTA from "./_components/ProjectCTA"
+
+// 动态导入 MarkdownModal - 只在用户点击卡片时才加载此组件
+const MarkdownModal = dynamic(() => import("@/app/_components/common/MarkdownModal"), {
+  ssr: false, // Modal 是交互式组件，无需服务端渲染
+})
 
 export default function VoiceAIChallengeContent() {
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null)

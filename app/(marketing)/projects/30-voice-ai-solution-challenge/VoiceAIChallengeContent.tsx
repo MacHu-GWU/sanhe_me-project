@@ -47,29 +47,12 @@ export default function VoiceAIChallengeContent() {
   }, [selectedCard])
 
   return (
-    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden">
+    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden pt-16">
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[600px] h-[400px] bg-gradient-radial from-primary/8 via-primary/4 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-gradient-radial from-secondary/6 via-secondary/3 to-transparent rounded-full blur-2xl"></div>
       </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-16">
-            <div className="flex space-x-8">
-              <Link href="/" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                Home
-              </Link>
-              <Link href="/projects" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                Projects
-              </Link>
-              <span className="text-primary font-medium">Voice AI Challenge</span>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Header Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">

@@ -1,13 +1,10 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 
 export default function ProjectsClient() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   const projects = [
     {
       id: "the-30-voice-30-ai-solutions-for-professionals-challenge",
@@ -21,55 +18,12 @@ export default function ProjectsClient() {
   ]
 
   return (
-    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden">
+    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden pt-16">
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[600px] h-[400px] bg-gradient-radial from-primary/8 via-primary/4 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-gradient-radial from-secondary/6 via-secondary/3 to-transparent rounded-full blur-2xl"></div>
       </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-16">
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                Home
-              </Link>
-              <span className="text-primary font-medium">Projects</span>
-            </div>
-
-            {/* Mobile Navigation Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-text-primary hover:text-primary transition-colors duration-200"
-              >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-primary/20">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link
-                  href="/"
-                  className="block px-3 py-2 text-text-secondary hover:text-primary transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Home
-                </Link>
-                <span className="block px-3 py-2 text-primary font-medium">
-                  Projects
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
 
       {/* Header Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">

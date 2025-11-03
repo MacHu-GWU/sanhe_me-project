@@ -1,14 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { BookOpen, Menu, X, Calendar, MessageCircle, Download, PenTool, GitCommit, Building2, Mail } from "lucide-react"
+import { BookOpen, Calendar, MessageCircle, Download, PenTool, GitCommit, Building2, Mail } from "lucide-react"
 import { FaGithub, FaLinkedin, FaPython } from "react-icons/fa"
 import Link from "next/link"
 import Image from "next/image"
 import { Spotlight } from "@/components/ui/spotlight"
 
 export default function HomePageContent() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -73,65 +72,13 @@ export default function HomePageContent() {
   ]
 
   return (
-    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden">
+    <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden pt-16">
       {/* Spotlight Background Effect */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
         <Spotlight className="top-10 left-full h-[80vh] w-[50vw]" fill="#00bfff" />
         <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="#87ceeb" />
       </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-16">
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <Link
-                href="/"
-                className="text-primary font-medium hover:text-highlight transition-colors duration-200 hover:glow-primary"
-              >
-                Home
-              </Link>
-              <Link href="/projects" className="text-text-secondary hover:text-primary transition-colors duration-200">
-                Projects
-              </Link>
-            </div>
-
-            {/* Mobile Navigation Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-text-primary hover:text-primary transition-colors duration-200"
-              >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-primary/20">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link
-                  href="/"
-                  className="block px-3 py-2 text-primary font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/projects"
-                  className="block px-3 py-2 text-text-secondary hover:text-primary transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Projects
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative">

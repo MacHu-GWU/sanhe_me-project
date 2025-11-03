@@ -73,7 +73,7 @@ export const PreviewMessage = ({
         {/* User Avatar - Right side */}
         {message.role === "user" && (
           <div className="size-8 flex items-center rounded-full justify-center bg-[#1a1a1a] shadow-lg border border-primary/50 shrink-0">
-            <span className="text-sm font-semibold text-primary">你</span>
+            <span className="text-sm font-semibold text-primary">You</span>
           </div>
         )}
       </div>
@@ -98,7 +98,7 @@ export const ThinkingMessage = () => {
 
         <div className="flex flex-col gap-2 w-full">
           <div className="flex flex-col gap-4 text-text-secondary">
-            正在思考...
+            thinking ...
           </div>
         </div>
       </div>

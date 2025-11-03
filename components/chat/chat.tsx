@@ -181,11 +181,35 @@ export function Chat() {
   const [messagesContainerRef, messagesEndRef] =
     useScrollToBottom<HTMLDivElement>();
 
+  /**
+   * Scroll to bottom ONLY when new messages are added
+   *
+   * This ensures that:
+   * 1. When user presses Enter and sends a message → scroll to see their message
+   * 2. When AI starts responding (new message added) → scroll once to show AI response
+   * 3. While user is typing → NO scrolling (prevents UI jumping)
+   * 4. While AI is streaming text → NO constant scrolling (prevents jitter)
+   *
+   * Uses requestAnimationFrame to ensure DOM has updated before scrolling
+   */
+  useEffect(() => {
+    if (messagesEndRef.current && messages.length > 0) {
+      // Use requestAnimationFrame to wait for DOM update
+      // This ensures the new message has been rendered before scrolling
+      requestAnimationFrame(() => {
+        messagesEndRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end"
+        });
+      });
+    }
+  }, [messages.length]); // ONLY trigger when a new message is added, not when content changes
+
   return (
     <div className="flex flex-col min-w-0 h-[calc(100dvh-52px)] bg-background">
       <div
         ref={messagesContainerRef}
-        className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll pt-4"
+        className="flex flex-col min-w-0 gap-2 flex-1 overflow-y-scroll pt-4"
       >
         {/* Initial AI Assistant Welcome Display */}
         {messages.length === 0 && <Overview />}
@@ -239,13 +263,11 @@ export function Chat() {
           messages.length > 0 &&
           messages[messages.length - 1].role === "user" && <ThinkingMessage />}
 
-        {/* Auto-scroll anchor */}
-        {messages.length > 0 && (
-          <div
-            ref={messagesEndRef}
-            className="shrink-0 min-w-[24px] min-h-[24px]"
-          />
-        )}
+        {/* Auto-scroll anchor - Always rendered to ensure scrolling works */}
+        <div
+          ref={messagesEndRef}
+          className="shrink-0 min-w-[24px] min-h-[24px]"
+        />
       </div>
 
       <form className="flex mx-auto px-4 pb-4 md:pb-6 gap-2 w-full md:max-w-3xl">

@@ -106,22 +106,19 @@ export function MultimodalInput({
   }, [handleSubmit, setLocalStorageInput, width]);
 
   return (
-    <div className="relative w-full flex flex-col gap-4">
+    <div className="relative w-full flex flex-col gap-3">
       {/* Suggested Questions */}
       {messages.length === 0 && (
-        <div className="flex flex-col gap-3">
-          <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0a0a0a] border-t-2 border-b-2 border-primary/30 py-2.5 px-4 rounded-lg shadow-lg shadow-primary/10">
-            <div className="text-center space-y-1">
+        <div className="flex flex-col gap-2">
+          <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0a0a0a] border-t-2 border-b-2 border-primary/30 py-2 px-4 rounded-lg shadow-lg shadow-primary/10">
+            <div className="text-center">
               <p className="text-sm text-text-primary font-medium leading-snug">
-                💡 <span className="font-semibold text-primary glow-primary">Tip</span>：Ask me directly, or click a suggested question below to start
-              </p>
-              <p className="text-xs text-text-secondary leading-snug">
-                👇 Pick a question to get started
+                💡 Ask me directly, or click a suggested question below to start 👇
               </p>
             </div>
           </div>
 
-          <div className="max-h-[180px] sm:max-h-[140px] overflow-y-auto">
+          <div className="max-h-[320px] sm:max-h-[280px] overflow-y-auto">
             <div className="grid sm:grid-cols-2 gap-2 w-full pr-1">
               {suggestedActions.map((suggestedAction, index) => (
                 <motion.div
@@ -156,7 +153,7 @@ export function MultimodalInput({
       {/* User Message Input Form */}
       <Textarea
         ref={textareaRef}
-        placeholder="输入你的问题..."
+        placeholder="Enter your question ..."
         value={input}
         onChange={handleInput}
         className={cn(

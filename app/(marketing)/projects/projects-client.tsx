@@ -3,19 +3,9 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Sparkles } from "lucide-react"
+import { projects } from "@/data/projects"
 
 export default function ProjectsClient() {
-  const projects = [
-    {
-      id: "the-30-voice-30-ai-solutions-for-professionals-challenge",
-      title: "The 30 Voice, 30 AI Solutions for Professionals Challenge",
-      description: "A build-in-public challenge: interviewing 30 professional leaders and co-creating 30 AI solutions together.",
-      status: "Active",
-      image: "https://sh-img-cdn.sanhe.me/projects/sanhe-me/projects/The-30-Voice-30-AI-Solutions-for-Professionals-Challenge-Cover-Image-v01.webp",
-      href: "/projects/30-voice-ai-solution-challenge",
-      color: "primary"
-    },
-  ]
 
   return (
     <div className="min-h-screen bg-background text-text-primary font-inter relative overflow-hidden pt-16">

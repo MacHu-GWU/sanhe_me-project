@@ -1,16 +1,18 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+import { generateSEOMetadata } from "@/lib/seo/generateMetadata"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
+// 根布局的默认元数据（会被页面级元数据覆盖）
 export const metadata: Metadata = {
-  title: "Sanhe Hu - Solution Architect & Builder",
-  description:
-    "Personal portfolio of Sanhe Hu, a Data/AI Architect specializing in open source solutions and enterprise architecture.",
-  keywords: ["Solution Architect", "Data Architect", "AI Architect", "Open Source", "Python", "Enterprise"],
-  authors: [{ name: "Sanhe Hu" }],
+  ...generateSEOMetadata({
+    title: "Sanhe Hu - Solution Architect & Builder",
+    description: "Personal portfolio of Sanhe Hu, a Data/AI Architect specializing in open source solutions and enterprise architecture.",
+    keywords: ["Data Architect", "AI Architect", "Open Source", "Enterprise"],
+  }),
   generator: 'v0.dev',
   icons: {
     icon: [

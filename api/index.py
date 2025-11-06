@@ -6,14 +6,13 @@ import uuid
 
 from fastapi import FastAPI, Request, Query
 from fastapi.responses import JSONResponse, StreamingResponse
+
+import aws_bedrock_runtime_mate.api as aws_bedrock_runtime_mate
 from vercel_ai_sdk_mate.api import RequestBody
 
 from sanhe_me.paths import path_enum
 from sanhe_me.vendor.ai_sdk_adapter import (
     request_body_to_bedrock_converse_messages,
-)
-from sanhe_me.vendor.multi_round_bedrock_runtime_chat_manager import (
-    ChatSession,
 )
 from sanhe_me.one.api import one
 
@@ -65,9 +64,10 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
 
     # 解析消息
     request_body = RequestBody(**request_body_data)
-    chat_session = ChatSession(
-        client=one.bsm.bedrockruntime_client,
+
+    default_converse_kwargs = aws_bedrock_runtime_mate.ConverseKwargs(
         # 使用跨区域 inference profile，自动分发请求到多个区域，提高吞吐量
+        # model_id="us.amazon.nova-micro-v1:0",
         # model_id="us.amazon.nova-lite-v1:0",
         model_id="us.amazon.nova-pro-v1:0",
         system=[
@@ -75,8 +75,14 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
             {"text": path_enum.knowledge_base_content},
             {"cachePoint": {"type": "default"}},
         ],
+    )  # we can reuse this later
+
+    chat_session = aws_bedrock_runtime_mate.patterns.ChatSession(
+        client=one.bsm.bedrockruntime_client,
+        converse_kwargs=default_converse_kwargs,
+        verbose=False,
     )
-    chat_session._session_id = request_body.id
+
     # chat_session._messages = [
     #     {
     #         "role": "user",
@@ -95,26 +101,46 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
     #     },
     # ]
     messages = request_body_to_bedrock_converse_messages(request_body)
-    chat_session._messages.extend(messages)
+
+    debug("------ Chat request")
+    for message in messages:
+        debug(message)
 
     # 调用 Bedrock 处理
-    response = chat_session.send_message([])
-    debug("------ Chat response")
-    output_text = response.output.message.content[0].text
-    debug(output_text)
-    debug("------ Token Usage")
-    debug(str(response.usage))
-    sys.stderr.flush()
+    converse_stream_response = chat_session.converse_stream(messages)
 
     # AI SDK v5 使用 SSE 格式，每行以 "data: " 开头
     # 文本使用 start/delta/end 三阶段模式
     def ai_sdk_v5_message_generator():
         id = str(uuid.uuid4())
+        response_text_chunks = []
+        usage = None
+
         # 文本开始
         yield f'data: {json.dumps({"type": "text-start", "id": id})}\n\n'
 
         # 文本内容（可以分多次发送）
-        yield f'data: {json.dumps({"type": "text-delta", "id": id, "delta": output_text})}\n\n'
+        for event in chat_session.iterate_events(converse_stream_response):
+            if event.is_messageStart():
+                debug("🚀 Message starting...")
+            elif event.is_contentBlockDelta():
+                if event.text:
+                    response_text_chunks.append(event.text)
+                    yield f'data: {json.dumps({"type": "text-delta", "id": id, "delta": event.text})}\n\n'
+            elif event.is_messageStop():
+                debug(f"\n✅ Done! Stop reason: {event.messageStop.stopReason}")
+            elif "metadata" in event.boto3_raw_data:
+                usage = event.metadata.usage.boto3_raw_data
+
+        debug("------ Chat response")
+        output_text = "".join(response_text_chunks)
+        debug(output_text)
+
+        debug("------ Token Usage")
+        debug(str(usage))
+
+        sys.stderr.flush()
+
         # 文本结束
         yield f'data: {json.dumps({"type": "text-end", "id": id})}\n\n'
         # 消息完成标记

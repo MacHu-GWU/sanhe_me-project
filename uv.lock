@@ -82,6 +82,21 @@ wheels = [
 ]
 
 [[package]]
+name = "aws-bedrock-runtime-mate"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "boto3" },
+    { name = "boto3-dataclass", extra = ["bedrock-runtime"] },
+    { name = "func-args" },
+    { name = "rich" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/05/4a/7ab202e9af2ed1fd914b34eaffca4d771bafd832c7abebb005177af77f76/aws_bedrock_runtime_mate-0.1.1.tar.gz", hash = "sha256:4b2fa2accae35d537f5343dcd4cc2b8172dfe0774677789bd68b41abf0874b96", size = 18963, upload-time = "2025-10-14T05:30:58.946Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/70/dcd63b5db3b7139c0a709e465cf2379ce7be39c6ae8a84e35cce5029ff33/aws_bedrock_runtime_mate-0.1.1-py3-none-any.whl", hash = "sha256:e03535e2b5de7f01d84830637c5c70e60feaa82ddc2ef8bb34df790f8638a76c", size = 21970, upload-time = "2025-10-14T05:30:57.705Z" },
+]
+
+[[package]]
 name = "aws-config"
 version = "0.1.4"
 source = { registry = "https://pypi.org/simple" }
@@ -417,24 +432,6 @@ wheels = [
 ]
 
 [[package]]
-name = "distro"
-version = "1.9.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz", hash = "sha256:2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed", size = 60722, upload-time = "2023-12-24T09:54:32.31Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2", size = 20277, upload-time = "2023-12-24T09:54:30.421Z" },
-]
-
-[[package]]
-name = "dnspython"
-version = "2.6.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/37/7d/c871f55054e403fdfd6b8f65fd6d1c4e147ed100d3e9f9ba1fe695403939/dnspython-2.6.1.tar.gz", hash = "sha256:e8f0f9c23a7b7cb99ded64e6c3a6f3e701d78f50c55e002b839dea7225cff7cc", size = 332727, upload-time = "2024-02-18T18:48:48.952Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/a1/8c5287991ddb8d3e4662f71356d9656d91ab3a36618c3dd11b280df0d255/dnspython-2.6.1-py3-none-any.whl", hash = "sha256:5ef3b9680161f6fa89daf8ad451b5f1a33b18ae8a1c6778cdf4b43f08c0a6e50", size = 307696, upload-time = "2024-02-18T18:48:46.786Z" },
-]
-
-[[package]]
 name = "docfly"
 version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -455,19 +452,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/ae/ed/aefcc8cd0ba62a0560c3c18c33925362d46c6075480bfa4df87b28e169a9/docutils-0.21.2.tar.gz", hash = "sha256:3a6b18732edf182daa3cd12775bbb338cf5691468f91eeeb109deff6ebfa986f", size = 2204444, upload-time = "2024-04-23T18:57:18.24Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8f/d7/9322c609343d929e75e7e5e6255e614fcc67572cfd083959cdef3b7aad79/docutils-0.21.2-py3-none-any.whl", hash = "sha256:dafca5b9e384f0e419294eb4d2ff9fa826435bf15f15b7bd45723e8ad76811b2", size = 587408, upload-time = "2024-04-23T18:57:14.835Z" },
-]
-
-[[package]]
-name = "email-validator"
-version = "2.2.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "dnspython" },
-    { name = "idna" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/48/ce/13508a1ec3f8bb981ae4ca79ea40384becc868bfae97fd1c942bb3a001b1/email_validator-2.2.0.tar.gz", hash = "sha256:cb690f344c617a714f22e66ae771445a1ceb46821152df8e165c5f9a364582b7", size = 48967, upload-time = "2024-06-20T11:30:30.034Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d7/ee/bf0adb559ad3c786f12bcbc9296b3f5675f529199bef03e2df281fa1fadb/email_validator-2.2.0-py3-none-any.whl", hash = "sha256:561977c2d73ce3611850a06fa56b414621e0c8faa9d66f2611407d87465da631", size = 33521, upload-time = "2024-06-20T11:30:28.248Z" },
 ]
 
 [[package]]
@@ -1010,24 +994,6 @@ wheels = [
 ]
 
 [[package]]
-name = "openai"
-version = "1.37.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "anyio" },
-    { name = "distro" },
-    { name = "httpx" },
-    { name = "pydantic" },
-    { name = "sniffio" },
-    { name = "tqdm" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/64/10/75ac0bb9fb69f4e8ffc14b7522c23b322da86948056d1d02e9707aa33d80/openai-1.37.1.tar.gz", hash = "sha256:faf87206785a6b5d9e34555d6a3242482a6852bc802e453e2a891f68ee04ce55", size = 261116, upload-time = "2024-07-25T23:14:03.526Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/43/18/8425b246cefad230b2574018bba0c039d70750b0a270eba1c9576a1fcab2/openai-1.37.1-py3-none-any.whl", hash = "sha256:9a6adda0d6ae8fce02d235c5671c399cfa40d6a281b3628914c7ebf244888ee3", size = 337005, upload-time = "2024-07-25T23:14:00.903Z" },
-]
-
-[[package]]
 name = "packaging"
 version = "25.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1246,15 +1212,6 @@ wheels = [
 ]
 
 [[package]]
-name = "python-multipart"
-version = "0.0.9"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/5c/0f/9c55ac6c84c0336e22a26fa84ca6c51d58d7ac3a2d78b0dfa8748826c883/python_multipart-0.0.9.tar.gz", hash = "sha256:03f54688c663f1b7977105f021043b0793151e4cb1c1a9d4a11fc13d622c4026", size = 31516, upload-time = "2024-02-10T13:32:04.684Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3d/47/444768600d9e0ebc82f8e347775d24aef8f6348cf00e9fa0e81910814e6d/python_multipart-0.0.9-py3-none-any.whl", hash = "sha256:97ca7b8ea7b05f977dc3849c3ba99d51689822fab725c3703af7c866a0c2b215", size = 22299, upload-time = "2024-02-10T13:32:02.969Z" },
-]
-
-[[package]]
 name = "pywin32-ctypes"
 version = "0.2.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1368,15 +1325,15 @@ wheels = [
 
 [[package]]
 name = "rich"
-version = "13.7.1"
+version = "14.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown-it-py" },
     { name = "pygments" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b3/01/c954e134dc440ab5f96952fe52b4fdc64225530320a910473c1fe270d9aa/rich-13.7.1.tar.gz", hash = "sha256:9be308cb1fe2f1f57d67ce99e95af38a1e2bc71ad9813b0e247cf7ffbcc3a432", size = 221248, upload-time = "2024-02-28T14:51:19.472Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fb/d2/8920e102050a0de7bfabeb4c4614a49248cf8d5d7a8d01885fbb24dc767a/rich-14.2.0.tar.gz", hash = "sha256:73ff50c7c0c1c77c8243079283f4edb376f0f6442433aecb8ce7e6d0b92d1fe4", size = 219990, upload-time = "2025-10-09T14:16:53.064Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/67/a37f6214d0e9fe57f6ae54b2956d550ca8365857f42a1ce0392bb21d9410/rich-13.7.1-py3-none-any.whl", hash = "sha256:4edbae314f59eb482f54e9e30bf00d33350aaa94f4bfcd4e9e3110e64d0d7222", size = 240681, upload-time = "2024-02-28T14:51:14.353Z" },
+    { url = "https://files.pythonhosted.org/packages/25/7a/b0178788f8dc6cafce37a212c99565fa1fe7872c70c6c9c1e1a372d9d88f/rich-14.2.0-py3-none-any.whl", hash = "sha256:76bc51fe2e57d2b1be1f96c524b890b816e334ab4c1e45888799bfaab0021edd", size = 243393, upload-time = "2025-10-09T14:16:51.245Z" },
 ]
 
 [[package]]
@@ -1480,49 +1437,28 @@ name = "sanhe-me"
 version = "0.1.1"
 source = { editable = "." }
 dependencies = [
-    { name = "annotated-types" },
-    { name = "anyio" },
+    { name = "aws-bedrock-runtime-mate" },
     { name = "aws-config" },
     { name = "aws-console-url" },
     { name = "boltons" },
     { name = "boto-session-manager" },
     { name = "boto3" },
     { name = "boto3-dataclass", extra = ["bedrock-runtime"] },
-    { name = "certifi" },
-    { name = "charset-normalizer" },
-    { name = "click" },
-    { name = "distro" },
-    { name = "dnspython" },
-    { name = "email-validator" },
     { name = "fastapi" },
     { name = "fastapi-cli" },
     { name = "func-args" },
-    { name = "h11" },
-    { name = "httpcore" },
-    { name = "httptools" },
     { name = "httpx" },
-    { name = "idna" },
     { name = "jinja2" },
-    { name = "markdown-it-py" },
-    { name = "markupsafe" },
-    { name = "mdurl" },
-    { name = "openai" },
     { name = "pydantic" },
-    { name = "pygments" },
     { name = "python-dotenv" },
-    { name = "python-multipart" },
     { name = "pyyaml" },
     { name = "requests" },
     { name = "rich" },
     { name = "s3pathlib" },
     { name = "s3vectorm" },
-    { name = "shellingham" },
-    { name = "sniffio" },
     { name = "soft-deps" },
     { name = "vercel-ai-sdk-mate" },
     { name = "vislog" },
-    { name = "watchfiles" },
-    { name = "websockets" },
     { name = "which-bsm" },
     { name = "which-env" },
     { name = "which-runtime" },
@@ -1553,8 +1489,7 @@ test = [
 
 [package.metadata]
 requires-dist = [
-    { name = "annotated-types", specifier = "==0.7.0" },
-    { name = "anyio", specifier = "==4.4.0" },
+    { name = "aws-bedrock-runtime-mate", specifier = ">=0.1.1,<1.0.0" },
     { name = "aws-config", specifier = ">=0.1.4,<1.0.0" },
     { name = "aws-console-url", specifier = ">=1.4.1,<2.0.0" },
     { name = "boltons", specifier = ">=25.0.0,<26.0.0" },
@@ -1562,44 +1497,26 @@ requires-dist = [
     { name = "boto3", specifier = ">=1.35.99,<2.0.0" },
     { name = "boto3-dataclass", extras = ["bedrock-runtime"], specifier = ">=1.40.0,<2.0.0" },
     { name = "build", marker = "extra == 'dev'", specifier = ">=1.2.1,<2.0.0" },
-    { name = "certifi", specifier = "==2024.7.4" },
-    { name = "charset-normalizer", specifier = "==3.4.0" },
-    { name = "click", specifier = "==8.1.7" },
-    { name = "distro", specifier = "==1.9.0" },
-    { name = "dnspython", specifier = "==2.6.1" },
     { name = "docfly", marker = "extra == 'doc'", specifier = "==3.0.0" },
-    { name = "email-validator", specifier = "==2.2.0" },
     { name = "fastapi", specifier = ">=0.118.0,<1.0.0" },
     { name = "fastapi-cli", specifier = "==0.0.13" },
     { name = "func-args", specifier = ">=1.0.1,<2.0.0" },
     { name = "furo", marker = "extra == 'doc'", specifier = "==2024.8.6" },
-    { name = "h11", specifier = "==0.14.0" },
-    { name = "httpcore", specifier = "==1.0.5" },
-    { name = "httptools", specifier = "==0.6.1" },
     { name = "httpx", specifier = ">=0.28.0,<1.0.0" },
-    { name = "idna", specifier = "==3.7" },
     { name = "ipython", marker = "extra == 'doc'", specifier = ">=8.18.1,<8.19.0" },
     { name = "jinja2", specifier = ">=3.1.4,<4.0.0" },
-    { name = "markdown-it-py", specifier = "==3.0.0" },
-    { name = "markupsafe", specifier = "==2.1.5" },
-    { name = "mdurl", specifier = "==0.1.2" },
     { name = "nbsphinx", marker = "extra == 'doc'", specifier = ">=0.8.12,<1.0.0" },
-    { name = "openai", specifier = "==1.37.1" },
     { name = "pydantic", specifier = ">=2.11.0,<3.0.0" },
-    { name = "pygments", specifier = "==2.18.0" },
     { name = "pygments", marker = "extra == 'doc'", specifier = ">=2.18.0,<3.0.0" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=8.2.2,<9.0.0" },
     { name = "pytest-cov", marker = "extra == 'test'", specifier = ">=6.0.0,<7.0.0" },
     { name = "python-dotenv", specifier = ">=1.0.1,<2.0.0" },
-    { name = "python-multipart", specifier = "==0.0.9" },
     { name = "pyyaml", specifier = ">=6.0.1,<7.0.0" },
     { name = "requests", specifier = ">=2.32.3,<3.0.0" },
-    { name = "rich", specifier = "==13.7.1" },
+    { name = "rich", specifier = ">=13.8.1,<15.0.0" },
     { name = "rstobj", marker = "extra == 'doc'", specifier = "==1.2.1" },
     { name = "s3pathlib", specifier = ">=2.3.6,<3.0.0" },
     { name = "s3vectorm", specifier = ">=0.1.1,<1.0.0" },
-    { name = "shellingham", specifier = "==1.5.4" },
-    { name = "sniffio", specifier = "==1.3.1" },
     { name = "soft-deps", specifier = ">=0.1.1,<1.0.0" },
     { name = "sphinx", marker = "extra == 'doc'", specifier = ">=7.4.7,<8.0.0" },
     { name = "sphinx-copybutton", marker = "extra == 'doc'", specifier = ">=0.5.2,<1.0.0" },
@@ -1608,8 +1525,6 @@ requires-dist = [
     { name = "twine", marker = "extra == 'dev'", specifier = ">=6.0.0,<7.0.0" },
     { name = "vercel-ai-sdk-mate", specifier = ">=5.0.1,<6.0.0" },
     { name = "vislog", specifier = ">=0.1.2,<1.0.0" },
-    { name = "watchfiles", specifier = "==0.22.0" },
-    { name = "websockets", specifier = "==12.0" },
     { name = "wheel", marker = "extra == 'dev'", specifier = ">=0.45.0,<1.0.0" },
     { name = "which-bsm", specifier = ">=0.1.1,<1.0.0" },
     { name = "which-env", specifier = ">=0.2.1,<1.0.0" },
@@ -1896,18 +1811,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e8/59/593bd0f40f7355806bf6573b47b8c22f8e1374c9b6fd03114bd6b7a3dcfd/tornado-6.5.2-cp39-abi3-win32.whl", hash = "sha256:c6f29e94d9b37a95013bb669616352ddb82e3bfe8326fccee50583caebc8a5f0", size = 445023, upload-time = "2025-08-08T18:26:56.677Z" },
     { url = "https://files.pythonhosted.org/packages/c7/2a/f609b420c2f564a748a2d80ebfb2ee02a73ca80223af712fca591386cafb/tornado-6.5.2-cp39-abi3-win_amd64.whl", hash = "sha256:e56a5af51cc30dd2cae649429af65ca2f6571da29504a07995175df14c18f35f", size = 445427, upload-time = "2025-08-08T18:26:57.91Z" },
     { url = "https://files.pythonhosted.org/packages/5e/4f/e1f65e8f8c76d73658b33d33b81eed4322fb5085350e4328d5c956f0c8f9/tornado-6.5.2-cp39-abi3-win_arm64.whl", hash = "sha256:d6c33dc3672e3a1f3618eb63b7ef4683a7688e7b9e6e8f0d9aa5726360a004af", size = 444456, upload-time = "2025-08-08T18:26:59.207Z" },
-]
-
-[[package]]
-name = "tqdm"
-version = "4.67.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737, upload-time = "2024-11-24T20:12:22.481Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/30/dc54f88dd4a2b5dc8a0279bdd7270e735851848b762aeb1c1184ed1f6b14/tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2", size = 78540, upload-time = "2024-11-24T20:12:19.698Z" },
 ]
 
 [[package]]

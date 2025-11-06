@@ -48,6 +48,7 @@ dependencies = [
     "func-args>=1.0.1,<2.0.0", # inspect function/method arguments
     "soft_deps>=0.1.1,<1.0.0", # Lazy import optional dependencies
     "boltons>=25.0.0,<26.0.0", # Utility functions for Python
+    "rich>=13.8.1,<15.0.0", # Rich text and beautiful formatting in the terminal
     # AWS SDK
     "boto3>=1.35.99,<2.0.0", # Official AWS Python SDK
     "boto3-dataclass[bedrock-runtime]>=1.40.0,<2.0.0", # Transform boto3 dictionaries into type-safe dataclasses with full autocomplete support.
@@ -67,6 +68,7 @@ dependencies = [
     "fastapi-cli==0.0.13",
     # AI SDK
     "vercel_ai_sdk_mate>=5.0.1,<6.0.0", # Vercel AI SDK Python adaptor library
+    "aws_bedrock_runtime_mate>=0.1.1,<1.0.0", # Bedrock runtime toolkit
     # Http client
     "httpx>=0.28.0,<1.0.0",
     "requests>=2.32.3,<3.0.0",
@@ -76,33 +78,6 @@ dependencies = [
     "PyYAML>=6.0.1,<7.0.0",
     # Developer Tools
     "python-dotenv>=1.0.1,<2.0.0",
-    # Others
-    "annotated-types==0.7.0",
-    "anyio==4.4.0",
-    "certifi==2024.7.4",
-    "charset-normalizer==3.4.0",
-    "click==8.1.7",
-    "distro==1.9.0",
-    "dnspython==2.6.1",
-    "email_validator==2.2.0",
-    "h11==0.14.0",
-    "httpcore==1.0.5",
-    "httptools==0.6.1",
-    "idna==3.7",
-    "markdown-it-py==3.0.0",
-    "MarkupSafe==2.1.5",
-    "mdurl==0.1.2",
-    "openai==1.37.1",
-    "Pygments==2.18.0",
-    "python-multipart==0.0.9",
-    "rich==13.7.1",
-    "shellingham==1.5.4",
-    "sniffio==1.3.1",
-#    "tqdm==4.66.4",
-#    "uvicorn==0.30.3",
-#    "uvloop==0.19.0",
-    "watchfiles==0.22.0",
-    "websockets==12.0",
 ]
 
 # ------------------------------------------------------------------------------

@@ -41,6 +41,7 @@ confluence_pipeline = ConfluencePipeline(
         "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/630587394/2023-09+to+2025-10+-+Multi-Agent+Solution+Evolution",
         "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/630718465/2024-08+to+2024-12+-+AI+Transformation+Consulting+Framework",
         "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/629637125/Sanhe+s+Skill+Point",
+        "https://sanhehu.atlassian.net/wiki/spaces/HSH/pages/629571597/Sanhe+s+AWS+Data+Lab+Projects",
     ],
     exclude=[],
     dir_out=dir_tmp_docs,

@@ -68,32 +68,32 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
     chat_session = ChatSession(
         client=one.bsm.bedrockruntime_client,
         # 使用跨区域 inference profile，自动分发请求到多个区域，提高吞吐量
-        model_id="us.amazon.nova-lite-v1:0",
+        # model_id="us.amazon.nova-lite-v1:0",
+        model_id="us.amazon.nova-pro-v1:0",
         system=[
             {"text": path_enum.instruction_content},
+            {"text": path_enum.knowledge_base_content},
             {"cachePoint": {"type": "default"}},
         ],
     )
     chat_session._session_id = request_body.id
-    chat_session._messages = [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "text": path_enum.knowledge_base_content,
-                },
-                {
-                    "cachePoint": {"type": "default"},
-                },
-            ],
-        },
-        {
-            "role": "assistant",
-            "content": [
-                {"text": "我已经理解了提供的背景知识库, 可以基于这些信息回答问题."},
-            ],
-        },
-    ]
+    # chat_session._messages = [
+    #     {
+    #         "role": "user",
+    #         "content": [
+    #             {"text": path_enum.knowledge_base_content},
+    #             {
+    #                 "cachePoint": {"type": "default"},
+    #             },
+    #         ],
+    #     },
+    #     {
+    #         "role": "assistant",
+    #         "content": [
+    #             {"text": "I’ve reviewed the knowledge base and I’m ready to answer questions based on it."},
+    #         ],
+    #     },
+    # ]
     messages = request_body_to_bedrock_converse_messages(request_body)
     chat_session._messages.extend(messages)
 

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import sys
 import uuid
 
@@ -17,10 +18,16 @@ from sanhe_me.one.api import one
 
 app = FastAPI()
 
+# 检测是否在 Vercel 环境中运行
+# 本地开发环境：IS_LOCAL_DEV = True，显示日志
+# Vercel 环境：IS_LOCAL_DEV = False，不显示日志
+IS_LOCAL_DEV = os.environ.get("VERCEL") != "1"
+
 
 def debug(s: str):
-    """Print debug info to stdout (shows as [info] in Vercel logs)"""
-    print(s, file=sys.stdout)
+    """Print debug info to stdout (only in local development)"""
+    if IS_LOCAL_DEV:
+        print(s, file=sys.stdout)
 
 
 @app.get("/api/hello")
@@ -116,7 +123,8 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
 
         # 文本内容（可以分多次发送）
         for event in chat_session.iterate_events(converse_stream_response):
-            debug(str(event))
+            if IS_LOCAL_DEV:
+                debug(str(event))
             if event.is_messageStart():
                 debug("🚀 Message starting...")
             elif event.is_contentBlockDelta():

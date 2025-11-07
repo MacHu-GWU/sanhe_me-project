@@ -76,49 +76,49 @@ export default function Hero() {
                   <span className="text-[#ff7b72]">class</span>{" "}
                   <span className="text-[#d2a8ff]">SanheHu</span>
                   <span className="text-text-primary">:</span>
-                  {"\n    "}
+                  {"\n  "}
                   <span className="text-text-primary">roles</span>{" "}
                   <span className="text-[#ff7b72]">=</span>{" "}
                   <span className="text-text-primary">[</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"AI Solution Architect"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># Design systems and product</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"Full Stack Developer"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># Backend and Frontend</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"Designer"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># UX, Visual Design</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"DevOps Specialist"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># Build infrastructure</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"Data Engineer"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># Create pipelines</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"ML Engineer"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># AI / ML integration</span>
-                  {"\n        "}
+                  {"\n    "}
                   <span className="text-[#a5d6ff]">"Open Source Maintainer"</span>
                   <span className="text-text-primary">,</span>{" "}
                   <span className="text-[#8b949e]"># Share knowledge</span>
-                  {"\n    "}
+                  {"\n  "}
                   <span className="text-text-primary">]</span>
-                  {"\n\n    "}
+                  {"\n\n  "}
                   <span className="text-[#ff7b72]">def</span>{" "}
                   <span className="text-[#d2a8ff]">deliver_project</span>
                   <span className="text-text-primary">(</span>
                   <span className="text-[#ffa657]">self</span>
                   <span className="text-text-primary">):</span>
-                  {"\n        "}
-                  <span className="text-[#8b949e]"># No meetings, no handoffs, no delays</span>
-                  {"\n        "}
+                  {"\n    "}
+                  <span className="text-[#8b949e]"># Complete ownership. Complete visibility. Complete delivery.</span>
+                  {"\n    "}
                   <span className="text-[#ff7b72]">return</span>{" "}
                   <span className="text-[#a5d6ff]">"Production-ready AI in weeks, not months"</span>
                 </code>
@@ -135,7 +135,7 @@ export default function Hero() {
 
             {/* Intro */}
             <p className="text-lg text-text-secondary mb-8 leading-relaxed">
-              I'm a full-stack AI solution architect who eliminates the bottleneck by doing it all - from design to deployment, with no meetings, no handoffs, and no delays.
+              I'm a full-stack AI solution architect who functions as a complete team - delivering end-to-end solutions with zero context loss, from initial design through production deployment.
             </p>
 
             {/* Real Impact */}
@@ -143,11 +143,11 @@ export default function Hero() {
             <ul className="space-y-3 mb-8 text-text-secondary">
               <li className="flex items-start">
                 <span className="text-xl mr-3">🏗️</span>
-                <span><strong className="text-text-primary">Multi-Agent Architecture:</strong> Built Multi-Agent platform serving 500M+ monthly requests</span>
+                <span><strong className="text-text-primary">Multi-Agent Architecture:</strong> Built Multi-Agent platform serving 2M+ monthly requests</span>
               </li>
               <li className="flex items-start">
                 <span className="text-xl mr-3">📚</span>
-                <span><strong className="text-text-primary">Enterprise RAG:</strong> Deployed 100+ RAG systems processing 20K daily queries</span>
+                <span><strong className="text-text-primary">Enterprise RAG:</strong> Deployed RAG systems processing 20K daily queries</span>
               </li>
               <li className="flex items-start">
                 <span className="text-xl mr-3">🔍</span>

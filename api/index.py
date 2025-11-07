@@ -19,7 +19,8 @@ app = FastAPI()
 
 
 def debug(s: str):
-    print(s, file=sys.stderr)
+    """Print debug info to stdout (shows as [info] in Vercel logs)"""
+    print(s, file=sys.stdout)
 
 
 @app.get("/api/hello")

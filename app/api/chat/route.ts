@@ -1,23 +1,25 @@
 /**
- * Next.js Route Handler for streaming chat responses
+ * Next.js Route Handler for streaming chat responses (Development Only)
  *
- * This route handler acts as a transparent proxy between the frontend and FastAPI backend,
- * correctly handling Server-Sent Events (SSE) streaming without buffering.
+ * This file is ignored in production via .vercelignore
  *
- * Why we need this:
- * - Next.js rewrites (in next.config.js) buffer the entire response before sending to client
- * - This causes streaming responses to appear all at once instead of progressively
- * - This Route Handler uses ReadableStream to forward chunks immediately as they arrive
+ * Purpose:
+ * - In development: Proxies /api/chat to local FastAPI server WITHOUT buffering
+ * - In production: This file doesn't exist, so Python serverless function handles /api/chat
+ *
+ * Why needed?
+ * - Next.js rewrites (next.config.js) buffer the entire response before sending to client
+ * - This breaks Server-Sent Events (SSE) streaming - text appears all at once
+ * - This Route Handler uses Response(body) to forward streams immediately
  */
 
 import { NextRequest } from 'next/server';
 
-const FASTAPI_URL = process.env.NODE_ENV === 'development'
-  ? 'http://127.0.0.1:8000'
-  : process.env.FASTAPI_URL || 'http://127.0.0.1:8000';
+const FASTAPI_URL = 'http://127.0.0.1:8000';
 
 export async function POST(request: NextRequest) {
   try {
+
     // Forward all headers from the original request
     const headers = new Headers();
     request.headers.forEach((value, key) => {

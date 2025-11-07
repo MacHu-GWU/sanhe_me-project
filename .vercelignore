@@ -4,3 +4,8 @@ pyproject.toml
 
 # Files starting with underscore are ignored by Vercel
 # (e.g., api/_index_bkp_v1.py, api/lib/_utils.py)
+
+# Ignore Next.js Route Handler for /api/chat in production
+# This allows the Python serverless function (api/index.py) to handle the route
+# In development, the Route Handler provides streaming proxy without buffering
+app/api/chat/route.ts

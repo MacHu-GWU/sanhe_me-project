@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 import sys
 import uuid
 
@@ -15,11 +14,6 @@ from sanhe_me.vendor.ai_sdk_adapter import (
     request_body_to_bedrock_converse_messages,
 )
 from sanhe_me.one.api import one
-
-# 添加项目根目录到 sys.path，以便导入 sanhe_me
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
 
 app = FastAPI()
 
@@ -121,6 +115,7 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
 
         # 文本内容（可以分多次发送）
         for event in chat_session.iterate_events(converse_stream_response):
+            debug(str(event))
             if event.is_messageStart():
                 debug("🚀 Message starting...")
             elif event.is_contentBlockDelta():

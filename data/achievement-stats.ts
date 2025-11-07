@@ -14,21 +14,12 @@ export const achievementStats: AchievementStat[] = [
   },
   {
     number: "10M+",
-    description: "Monthly Downloads",
+    description: "Monthly Downloads on PyPI",
     color: "text-primary",
     borderColor: "border-primary",
     glowColor: "shadow-primary/20",
     icon: Download,
     href: "https://github.com/MacHu-GWU",
-  },
-  {
-    number: "600+",
-    description: "Open Source Solutions",
-    color: "text-primary",
-    borderColor: "border-primary",
-    glowColor: "shadow-primary/20",
-    icon: FaGithub,
-    href: "https://github.com/MacHu-GWU?tab=repositories",
   },
   {
     number: "2000+",
@@ -38,6 +29,15 @@ export const achievementStats: AchievementStat[] = [
     glowColor: "shadow-secondary/20",
     icon: PenTool,
     href: "",
+  },
+  {
+    number: "600+",
+    description: "GitHub POC Repositories",
+    color: "text-primary",
+    borderColor: "border-primary",
+    glowColor: "shadow-primary/20",
+    icon: FaGithub,
+    href: "https://github.com/MacHu-GWU?tab=repositories",
   },
   {
     number: "3000+",

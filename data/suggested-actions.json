@@ -28,5 +28,65 @@
     "title": "🎯 Client Solutions",
     "label": "Real-world impact and results",
     "action": "What tangible results has Sanhe delivered for enterprise clients? Can you share specific success stories?"
+  },
+  {
+    "title": "🧠 AI/LLM/RAG/Agent",
+    "label": "Enterprise RAG architecture and multi-agent systems",
+    "action": "Tell me about Sanhe's experience building enterprise RAG systems and AI agent architectures. How did he scale the Knowledge Integration System to 20,000 daily queries?"
+  },
+  {
+    "title": "📊 Big Data & Analytics",
+    "label": "Data lake, pipeline, and analytics architecture",
+    "action": "What's Sanhe's experience with building data lakes and analytics pipelines? Walk me through his approach to data architecture and ETL design"
+  },
+  {
+    "title": "☁️ AWS Architecture",
+    "label": "Cloud architecture design and implementation",
+    "action": "What AWS architectures has Sanhe designed? Tell me about his experience with multi-account strategies, microservices, and enterprise-scale deployments"
+  },
+  {
+    "title": "🐍 Python Full-Stack Development",
+    "label": "Python backend and frontend expertise",
+    "action": "How does Sanhe approach full-stack development? Tell me about his Python expertise and his experience building both backend APIs and frontend applications"
+  },
+  {
+    "title": "🤖 AWS Bedrock",
+    "label": "Generative AI and foundation models",
+    "action": "How has Sanhe leveraged AWS Bedrock for enterprise AI solutions? Tell me about his experience with foundation models, agents, and knowledge bases"
+  },
+  {
+    "title": "🧪 AWS SageMaker",
+    "label": "Machine learning and model deployment",
+    "action": "Tell me about Sanhe's experience with AWS SageMaker. How has he used it for ML model training, deployment, and MLOps?"
+  },
+  {
+    "title": "🔍 AWS Kendra",
+    "label": "Enterprise search and intelligent retrieval",
+    "action": "Tell me about Sanhe's work with AWS Kendra for enterprise search. How does he compare it with custom RAG solutions?"
+  },
+  {
+    "title": "🔎 AWS OpenSearch",
+    "label": "Search engine and log analytics",
+    "action": "What's Sanhe's experience with AWS OpenSearch? How has he used it for search functionality, log analytics, and observability?"
+  },
+  {
+    "title": "🗄️ AWS Redshift",
+    "label": "Data warehousing and analytics",
+    "action": "What's Sanhe's experience with AWS Redshift? How has he used it for data warehousing, query optimization, and analytics workloads?"
+  },
+  {
+    "title": "⚙️ AWS Glue",
+    "label": "ETL and data catalog",
+    "action": "What's Sanhe's experience with AWS Glue for ETL pipelines and data catalog management? How does he design scalable data transformation workflows?"
+  },
+  {
+    "title": "⚡ AWS DynamoDB",
+    "label": "NoSQL database and serverless data",
+    "action": "What's Sanhe's experience with DynamoDB? How does he design DynamoDB schemas, optimize performance, and handle high-scale workloads?"
+  },
+  {
+    "title": "λ AWS Lambda",
+    "label": "Serverless compute and event-driven architecture",
+    "action": "How has Sanhe used AWS Lambda for serverless applications? Tell me about his approach to event-driven architectures and microservices"
   }
 ]

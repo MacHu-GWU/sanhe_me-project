@@ -70,8 +70,8 @@ async def handle_chat_data(request: Request, protocol: str = Query("data")):
     default_converse_kwargs = aws_bedrock_runtime_mate.ConverseKwargs(
         # 使用跨区域 inference profile，自动分发请求到多个区域，提高吞吐量
         # model_id="us.amazon.nova-micro-v1:0",
-        # model_id="us.amazon.nova-lite-v1:0",
-        model_id="us.amazon.nova-pro-v1:0",
+        model_id="us.amazon.nova-lite-v1:0",
+        # model_id="us.amazon.nova-pro-v1:0",
         system=[
             {"text": path_enum.instruction_content},
             {"text": path_enum.knowledge_base_content},
